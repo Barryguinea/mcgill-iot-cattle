@@ -1,0 +1,7 @@
+metric,value
+winter_alerts_total,149
+winter_scans_total,42
+alerts_with_matched_scan_within_1d,16
+alerts_with_same_day_scan,7
+scans_with_same_day_alert,7
+scans_with_alert_within_1d,11

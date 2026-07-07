@@ -1,0 +1,5 @@
+season,behavior_source,status_for_alignment,priority
+fall_2019,/Users/alioubarry/PROJECT/mcgill_iot_cattle/Données completes/Données accelerometres/Fall 2019/Behavioral scans - Amir's lameness project.xlsx,needs collar/color-to-Cow_ID mapping for some scans; dates likely align with Fall 2019 IceTag period,high
+summer_2019,/Users/alioubarry/PROJECT/mcgill_iot_cattle/Données completes/Données accelerometres/Summer 2019/Behavioral scans - Catherine.xlsx,direct scan workbook present; inspect columns and Cow_ID/date granularity next,high
+winter_2019,/Users/alioubarry/PROJECT/mcgill_iot_cattle/Données completes/Données accelerometres/Winter 2019/cow_scan_long-format_7.12.19.xlsx,best candidate; already long-format and includes behavior/context variables,highest
+fall_2021,/Users/alioubarry/PROJECT/mcgill_iot_cattle/Données completes/Données accelerometres/Fall 2021/Scan Sampling.xlsx,small dataset; likely needs tag/collar/group mapping confirmation,medium

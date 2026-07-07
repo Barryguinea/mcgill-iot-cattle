@@ -1,0 +1,11 @@
+Cow,old_lameness_notifs,old_n_bins,old_coverage_mean,v3_n_bins,v3_coverage_mean,v3_legacy_if_lameness_notifs,behavioral_warning_notifs,instability_warning_notifs,hybrid_warning_notifs,season
+2041,1,582,100.0,582,100.0,1,2,2,3,fall_2021
+2208,0,583,100.0,583,100.0,0,1,2,2,fall_2021
+8056,0,584,100.0,584,100.0,0,2,1,2,fall_2021
+8057,0,583,100.0,583,100.0,0,2,1,2,fall_2021
+8080,0,585,100.0,585,100.0,0,2,1,2,fall_2021
+8089,1,584,100.0,584,100.0,1,2,2,2,fall_2021
+8537,0,582,100.0,582,100.0,0,1,1,1,fall_2021
+8539,0,9,100.0,9,100.0,0,0,0,0,fall_2021
+8557,1,457,100.0,457,100.0,1,1,1,2,fall_2021
+8562,1,582,100.0,582,100.0,1,2,2,2,fall_2021

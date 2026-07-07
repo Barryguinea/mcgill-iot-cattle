@@ -1,0 +1,5 @@
+season,alignment_status,reason,next_action
+winter_2019,done,Cow_ID and Date are available in long-format scan table.,Interpret concordance and refine behavior categories with domain team.
+summer_2019,not_done_yet,"Scan workbook has Cow IDs and scan codes, but exact dates/times must be mapped from Week sheets before alert alignment.","Extract week/date mapping from protocol or workbook metadata, then run same-day alignment."
+fall_2019,not_done_yet,Scan workbook uses paddock/collar color labels rather than direct Cow_ID in scan rows.,"Obtain or reconstruct color/paddock-to-Cow_ID mapping for weeks 4, 5, 5.2."
+fall_2021,not_done_yet,Scan workbook uses collar/color/group labels and most scan dates precede the IceTag window; mapping and overlap must be confirmed.,Use scan sheets around Nov 30-Dec 6 and map color/group labels to Cow_ID.

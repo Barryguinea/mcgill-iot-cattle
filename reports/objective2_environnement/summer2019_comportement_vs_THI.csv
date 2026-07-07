@@ -1,0 +1,7 @@
+comportement,rho_vs_THI,p,n_jours,signif
+eating,0.738,0.0366,8,OUI
+locomotion,-0.098,0.8182,8,non
+Idle,-0.286,0.4927,8,non
+Social,-0.357,0.3851,8,non
+Maintenance,-0.359,0.3821,8,non
+Explo,-0.595,0.1195,8,non

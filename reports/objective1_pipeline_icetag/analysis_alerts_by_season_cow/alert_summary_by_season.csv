@@ -1,0 +1,5 @@
+season,n_cows,n_intervals,cow_days,first_T,last_T,if_anomaly_points,lameness_points,lameness_starts,lameness_notifs,alerted_cows,notifs_per_cow,notifs_per_100_cow_days,mean_alert_confidence,min_alert_confidence,max_alert_confidence,mean_coverage_pct,min_coverage_pct,low_coverage_rows,low_coverage_notifications
+fall_2019,30,93860,977.71,2019-11-11 18:45:00,2019-12-14 13:00:00,5711,1104,121,105,26,3.5,10.74,49.12,33.1,60.5,99.28,0.0,673,0
+fall_2021,10,5131,53.45,2021-11-30 09:00:00,2021-12-06 11:00:00,302,38,5,4,4,0.4,7.48,53.23,48.1,58.1,100.0,100.0,0,0
+summer_2019,18,139111,1449.07,2019-06-05 13:00:00,2019-09-06 12:00:00,8081,1045,166,127,17,7.06,8.76,46.85,31.9,58.8,98.29,0.0,2385,0
+winter_2019,17,136929,1426.34,2019-01-16 15:15:00,2019-04-17 11:30:00,6462,1635,214,149,17,8.76,10.45,48.23,32.1,61.2,94.45,0.0,7606,0

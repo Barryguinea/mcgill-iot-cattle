@@ -1,0 +1,325 @@
+CONTEXTE DE TRANSMISSION — PROJET MCGILL IOT CATTLE
+Date: 2026-03-30
+
+1. CONTEXTE GENERAL
+
+Ce projet McGill n'est pas une simple continuation du mémoire sur la boiterie bovine, mais une extension cohérente du travail déjà réalisé sur les données IoT et plus précisément sur les accéléromètres bovins.
+
+L'équipe McGill veut exploiter:
+- des données IoT comportementales (accéléromètres sur les pattes des vaches)
+- des données environnementales (température, humidité)
+- des observations comportementales
+
+Le but n'est pas seulement de "faire du ML", mais de proposer une méthodologie structurée pour:
+- comprendre comment l'environnement affecte le comportement des vaches
+- intégrer les différentes sources de données
+- produire un notebook Jupyter utile, reproductible et transférable pour l'équipe
+- construire un travail de co-développement avec les expertes terrain (Tania, Marjorie)
+
+2. MAIL RECU DE LA DIRECTRICE — INTERPRETATION
+
+Le mail reçu dit en substance:
+- considérer ce projet comme une extension de mes travaux IoT, en particulier sur les accéléromètres
+- objectif 1: utiliser les données IoT de comportement + données environnementales pour comprendre l'effet de l'environnement sur le comportement
+- objectif 2: développer un notebook Jupyter pour l'utilisation de l'IoT dans le cadre des bovins laitiers
+- il existe déjà des données issues d'expériences menées entre 2018 et 2023
+- l'article de Marjorie sert de point de départ
+- il est demandé de partir de ces premiers résultats pour proposer une offre de service / méthodologie détaillée
+- le travail doit être vu comme un co-développement entre utilisateurs finaux et experts en sciences informatiques
+
+Conclusion: l'attente principale n'est pas seulement du code, mais une proposition méthodologique claire, crédible et collaborative.
+
+3. ARTICLE DE REFERENCE (MARJORIE CELLIER ET AL.)
+
+Fichier lu:
+/Users/alioubarry/Desktop/s41598-025-89891-4.pdf
+
+Référence:
+Cellier, M., Shepley, E., Aigueperse, N., Villettaz Robichaud, M., & Vasseur, E. (2025).
+Enhancing movement opportunity to support behavioral needs for movement-restricted cattle through different conditions of access to exercise.
+Scientific Reports, 15, 5917.
+DOI: https://doi.org/10.1038/s41598-025-89891-4
+
+4. COMPREHENSION DE L'ARTICLE
+
+Question scientifique de l'article:
+- comment l'accès à une zone d'exercice affecte-t-il la locomotion et le comportement de vaches logées en tie-stall ?
+- quelles conditions modulent cet effet ?
+  - indoor vs outdoor
+  - durée de sortie
+  - taille de l'aire
+  - type de sol / conditions d'accès
+
+Population et dispositif:
+- 141 vaches Holstein en lactation
+- 6 essais indépendants
+- vaches saines et non boiteuses
+- mesures des pas via IceTag
+- extraction des pas à 1-minute intervals
+- observations comportementales complémentaires
+
+Résultats principaux:
+- +304 pas/jour avec accès à l'exercice, soit +53%
+- outdoor > indoor: +167 pas/jour
+- grande aire > petite aire: +146 pas/jour
+- 2h > 1h: +84 pas/jour
+- dans l'aire d'exercice, beaucoup de temps passé idle, mais aussi exploration et comportements sociaux
+
+Lecture scientifique correcte:
+- ce n'est PAS un article de détection de boiterie
+- c'est un article sur le mouvement, les besoins comportementaux et l'effet du contexte expérimental sur la locomotion
+- il montre que les variables locomotrices sont très sensibles au contexte de logement et d'accès à l'exercice
+
+5. LIEN AVEC LE MEMOIRE ACTUEL SUR LA BOITERIE
+
+Le lien avec le mémoire actuel est indirect mais fort.
+
+Le mémoire a déjà développé:
+- traitement de données capteurs bovines
+- pipeline temporel complet
+- harmonisation / nettoyage / agrégation
+- feature engineering comportemental
+- détection d'anomalies
+- logique de décision métier
+- validation rigoureuse
+- reproductibilité et traçabilité
+
+Ce que l'article de Cellier apporte au regard du mémoire:
+- il confirme que les signaux comme les pas et la locomotion sont pertinents
+- il montre surtout que ces signaux sont fortement dépendants du contexte expérimental et environnemental
+- il renforce donc une limite centrale du mémoire: les comportements ne sont pas universels, ils dépendent du contexte de logement, d'exercice et probablement aussi d'autres facteurs externes
+
+En une phrase:
+Si un simple changement d'accès à l'exercice modifie fortement le nombre de pas, alors tout modèle fondé sur les comportements doit intégrer ou au moins considérer explicitement le contexte.
+
+6. DIFFERENCE ENTRE LE MEMOIRE ET LE PROJET MCGILL
+
+Mémoire actuel:
+- objectif: détecter une boiterie probable
+- approche: non supervisée + règles métier
+- sortie: alerte / notification actionnable
+
+Projet McGill:
+- objectif: comprendre et modéliser l'effet du contexte, de l'environnement et des conditions expérimentales sur les comportements locomoteurs
+- approche attendue: analyse intégrée de données expérimentales, environnementales et comportementales
+- sortie: cadre analytique + notebook reproductible
+
+Donc le projet McGill n'est pas une simple détection d'anomalies.
+C'est davantage un projet de:
+- structuration de données
+- modélisation explicative / comportementale
+- intégration multi-sources
+- outil analytique pour équipe de recherche
+
+7. VALEUR AJOUTEE POSSIBLE A APPORTER DANS LE PROJET MCGILL
+
+A partir des travaux actuels, la valeur ajoutée possible est:
+- reprise méthodique des données IoT bovines
+- structuration propre des jeux de données 2018–2023
+- fusion multi-sources (accéléromètres + environnement + observations)
+- feature engineering plus riche que le simple "nombre de pas"
+- pipeline reproductible et documenté
+- comparaison de méthodes statistiques et ML si les données le permettent
+- notebook Jupyter final utilisable par l'équipe
+
+Important:
+Le point fort n'est pas "j'ai déjà fait exactement ce projet".
+Le point fort est:
+"j'ai déjà construit un pipeline rigoureux sur données capteurs bovines, avec validation, reproductibilité et interprétation comportementale; je peux donc transposer ce socle à une nouvelle question scientifique plus contextualisée".
+
+8. EXEMPLE DE DONNEES FOURNI (TABLE SUMMER2019)
+
+Colonnes visibles:
+- Cow_ID
+- Trt_details
+- Trt
+- Trt_order
+- Week
+- Block
+- Size
+- Duration_per_day
+- Sum_Steps
+- Experiment
+
+Interpretation probable de chaque colonne:
+
+Cow_ID
+- identifiant de la vache
+
+Trt_details
+- détail du traitement
+- ex: Outdoor, Indoor
+- décrit probablement le type précis d'accès à l'exercice
+
+Trt
+- groupe principal de traitement
+- ex: Exercise vs Non-exercise
+
+Trt_order
+- ordre de passage du traitement dans le protocole
+- utile pour contrôler les effets d'ordre dans un design croisé / latin square
+
+Week
+- semaine expérimentale
+
+Block
+- identifiant du bloc expérimental
+- probablement groupe de vaches appariées par caractéristiques (parité, DIM, etc.)
+- ex: 6_S2019 = bloc 6 dans Summer 2019
+
+Size
+- taille de l'aire d'exercice (probablement en m²)
+- ex: 20, 40, 60, 80
+
+Duration_per_day
+- durée d'accès quotidienne à l'exercice
+- probablement en heures (1 ou 2)
+
+Sum_Steps
+- variable réponse principale
+- nombre total de pas sur la période observée (très probablement quotidien)
+
+Experiment
+- identifiant de l'expérience / campagne
+- ex: S2019 = Summer 2019
+
+Lecture générale de la table:
+- ce n'est pas du signal brut minute par minute
+- c'est déjà un niveau agrégé expérimental
+- donc la première étape d'analyse doit partir de ce niveau-là avant d'aller éventuellement vers des données plus fines
+
+9. CE QUE CET EXEMPLE DE TABLE IMPLIQUE POUR LA METHODOLOGIE
+
+Cette structure de données montre qu'il faut commencer par:
+- une lecture expérimentale et statistique des données agrégées
+- la reproduction des résultats de référence de l'article
+- l'analyse des facteurs expérimentaux explicites (traitement, type, taille, durée, semaine, bloc)
+
+Ce n'est qu'ensuite, si les signaux plus fins sont disponibles, qu'il devient pertinent de proposer:
+- features temporelles plus avancées
+- analyse plus fine des séquences
+- classification comportementale
+- ML ou deep learning
+
+10. OFFRE METHODOLOGIQUE STRUCTUREE PROPOSEE
+
+Phase 1 — Inventaire, structuration et audit des données
+Objectif:
+- comprendre précisément les données 2018–2023
+
+Travail:
+- inventaire des fichiers et formats
+- dictionnaire de variables
+- unité d'analyse de chaque table
+- contrôle qualité
+- alignement temporel entre sources
+- documentation du design expérimental
+
+Livrables:
+- rapport d'audit des données
+- dictionnaire de données
+- schéma d'intégration des sources
+
+Phase 2 — Reproduction des résultats existants de référence
+Objectif:
+- repartir de l'existant (article de Marjorie) pour établir une base fiable
+
+Travail:
+- reconstruire les tables analytiques
+- reproduire les résultats principaux sur Sum_Steps
+- refaire les analyses descriptives et modèles de base (GLMM / modèles mixtes si appropriés)
+- comparer les résultats reproduits à l'article
+
+Livrables:
+- notebook de reproduction
+- comparaison résultats article vs reproduction
+
+Phase 3 — Intégration des données environnementales et comportementales
+Objectif:
+- répondre à la vraie question du projet: comment l'environnement affecte le comportement ?
+
+Travail:
+- fusion des données environnementales (température, humidité, éventuellement THI)
+- alignement avec les données capteurs
+- intégration des observations comportementales
+- analyse des liens contexte ↔ comportement
+
+Analyses possibles:
+- modèles mixtes avec covariables environnementales
+- effets d'interaction (traitement x température, durée x taille, essai x saison, etc.)
+- analyses stratifiées par contexte expérimental
+
+Livrables:
+- dataset fusionné
+- rapport d'analyse environnement-comportement
+
+Phase 4 — Enrichissement analytique (si les données le permettent)
+Objectif:
+- aller au-delà du simple nombre de pas
+
+Si seules des données agrégées sont disponibles:
+- analyses statistiques avancées
+- clustering de profils
+- visualisations longitudinales
+
+Si des signaux accéléromètres plus fins sont disponibles:
+- features temporelles et fréquentielles
+- fenêtres glissantes
+- classification comportementale
+- ML supervisé / semi-supervisé si annotations suffisantes
+
+Méthodes candidates:
+- modèles mixtes
+- Random Forest
+- XGBoost
+- SVM
+- LSTM / CNN 1D seulement si données et labels le justifient
+
+Livrables:
+- comparaison des approches
+- recommandations méthodologiques
+
+Phase 5 — Notebook final reproductible et transférable
+Objectif:
+- produire un notebook utile à l'équipe McGill
+
+Contenu attendu:
+- chargement et visualisation des données
+- audit des variables
+- analyses descriptives
+- reproduction des résultats de référence
+- analyses environnementales
+- éventuellement module de classification si validé
+- documentation pour utilisateurs non techniques
+
+Livrables:
+- notebook Jupyter documenté
+- guide d'utilisation
+- documentation méthodologique courte
+
+11. QUESTIONS A CLARIFIER AVEC TANIA ET MARJORIE
+
+Avant de figer l'offre, il faudra demander:
+- les données accéléromètres disponibles sont-elles brutes ou déjà agrégées ?
+- quelle est la fréquence exacte des signaux ?
+- quelles variables environnementales sont disponibles et à quelle granularité ?
+- les observations comportementales sont-elles annotées de façon exploitable ?
+- les horodatages permettent-ils un alignement multi-source fiable ?
+- l'objectif principal est-il explicatif, prédictif, ou les deux ?
+- le notebook doit-il servir surtout à la recherche, à la démonstration, ou à l'usage interne courant ?
+
+12. FORMULATION PROFESSIONNELLE DU BUT REEL DU PROJET
+
+Le but réel du projet McGill peut être formulé comme suit:
+
+"Exploiter de manière structurée et reproductible des données IoT comportementales, environnementales et observationnelles afin de mieux comprendre les comportements locomoteurs des vaches dans différents contextes expérimentaux, et produire un notebook analytique utile à l'équipe de recherche."
+
+13. POINTS A RETENIR POUR UNE NOUVELLE CONVERSATION
+
+- Le projet McGill est une extension des travaux IoT, pas une redite du mémoire.
+- L'article de Cellier est le point de départ scientifique, pas l'objectif final.
+- Le cœur du besoin est: structurer les données, reproduire l'existant, intégrer environnement + comportement, proposer une méthodologie, livrer un notebook.
+- L'offre doit être progressive, crédible et collaborative.
+- Il faut éviter de promettre trop tôt du deep learning ou des modèles avancés avant l'audit des données.
+- Le meilleur angle est: partir des données agrégées et du design expérimental, puis enrichir si les signaux bruts et les annotations le permettent.
+

@@ -1,0 +1,6 @@
+feature,moy_boiteuses,moy_saines,p_value,significatif_5pct
+Pas / jour,664.6,671.74,1.0,non
+Variabilité des pas,364.56,296.05,0.3773,non
+Heures couché / jour,14.87,14.54,0.5833,non
+Nb de couchers / jour,83.0,63.46,0.2674,non
+Motion Index / jour,1975.06,2993.95,1.0,non

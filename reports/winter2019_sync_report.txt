@@ -1,0 +1,60 @@
+RAPPORT - WINTER 2019 SYNCHRONE REPRODUCTIBLE
+Date : 2026-04-16
+
+Source :
+/Users/alioubarry/PROJECT/mcgill_iot_cattle/Données completes/Données accelerometres/Winter 2019/cow_scan_long-format_7.12.19.xlsx
+
+1. Taille du jeu
+- lignes : 42
+- vaches : 8
+- periode : 2019-02-14 a 2019-04-05
+
+2. Variables derivees creees
+- comptes comportementaux par categorie
+- pourcentages comportementaux par categorie
+- behavior_activity_score
+- icetag_steps_session_total
+- icetag_steps_per_hour_norm
+
+3. Correlations les plus utiles avec les pas IceTag normalises
+                            corr_with_icetag_steps_per_hour_norm
+icetag_steps_per_hour_norm                              1.000000
+icetag_steps_session_total                              0.815015
+count_active_mobile                                     0.428065
+pct_active_mobile                                       0.400645
+Treatment_pad_size(m2)                                  0.297707
+pct_immobile                                            0.283564
+count_immobile                                          0.255862
+behavior_activity_score                                 0.106841
+
+4. Resume par vache
+        n_obs  mean_steps_per_hour  mean_behavior_score  mean_pct_active_mobile  mean_pct_immobile  mean_distance_index
+Cow_ID                                                                                                                 
+3437        5           157.900000             0.298333                0.153333           0.333333             0.423333
+2056        6           125.166667             0.211111                0.033333           0.361111             0.616667
+5250        5           111.800000             0.163333                0.040000           0.506667             0.656667
+3443        6           106.583333             0.252778                0.050000           0.227778             0.519444
+8508        5            84.400000             0.291667                0.106667           0.213333             0.410000
+8510        6            83.750000             0.244444                0.055556           0.233333             0.550000
+2081        6            79.333333             0.258333                0.083333           0.316667             0.516667
+5246        3            49.666667             0.205556                0.011111           0.311111             0.583333
+
+5. Resume par contexte
+ Treatment_hour  Treatment_pad_size(m2) Weather_conditions  n_obs  mean_steps_per_hour  mean_behavior_score  mean_pct_active_mobile  mean_pct_immobile
+              1                      20              clear      4                85.00             0.233333                0.050000           0.250000
+              1                      20               rain      1                62.00             0.266667                0.000000           0.066667
+              1                      20               snow      1                28.00             0.233333                0.000000           0.066667
+              1                      40              clear      2                60.50             0.250000                0.033333           0.133333
+              1                      40               rain      1                62.00             0.183333                0.066667           0.533333
+              1                      40               snow      1                73.00             0.300000                0.066667           0.000000
+              1                      60              clear      4               102.25             0.279167                0.083333           0.283333
+              1                      60               rain      1               116.00             0.466667                0.333333           0.133333
+              1                      80              clear      4               138.25             0.233333                0.083333           0.416667
+              1                      80               rain      1                63.00             0.283333                0.066667           0.133333
+              1                      80               snow      1               217.00             0.316667                0.200000           0.333333
+              2                      20              clear      3               108.50             0.197222                0.033333           0.388889
+
+Conclusion :
+Winter 2019 reste le meilleur point de depart pour une analyse integree McGill, car
+les dimensions comportement, environnement et locomotion y sont deja alignees dans
+une meme table exploitable.

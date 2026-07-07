@@ -1,0 +1,10 @@
+comportement,moy_avec_alerte,moy_sans_alerte,p_value,signif
+locomotion,0.059,0.088,0.4957,non
+lying,0.001,0.0,0.0004,OUI
+Idle,0.717,0.449,0.0,OUI
+Vigilance,0.011,0.176,0.0,OUI
+Explo,0.096,0.148,0.1277,non
+eating,0.044,0.067,0.5823,non
+Social,0.064,0.074,0.7641,non
+Maintenance,0.008,0.019,0.9388,non
+Other,0.001,0.003,0.9182,non

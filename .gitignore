@@ -1,0 +1,32 @@
+# ============================================================
+# Données confidentielles McGill — NE JAMAIS versionner
+# ============================================================
+Données completes/
+mcgill_brut.csv
+mcgill_sls_labels.csv
+
+# Séries temporelles capteurs par vache (dérivées des données brutes) et
+# gros fichiers régénérables par les notebooks
+*_pipeline_predictions.csv
+*_pipeline_input_15min.csv
+*_predictions_core.csv
+*_multimodal_15min.csv
+*_icetag_environnement_15min.csv
+mcgill_pipeline_predictions.csv
+reports/mcgill_pipeline_daily_alerts.csv
+
+# Jeu de données externe volumineux (article) — non nécessaire au dépôt
+data-movement-behavior-main/dataset/
+
+# ============================================================
+# Artefacts système / build
+# ============================================================
+.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+~$*
+*.tmp
+
+# PDF d'article de référence (volumineux, disponible en ligne)
+s41598-*.pdf

@@ -1,0 +1,5 @@
+Cow,T,if_anomaly_point,pred_problem_episode,pred_problem_start,pred_lameness_episode,pred_lameness_start,notif_lameness,lame_confidence,coverage_pct
+2041,2021-12-01 10:15:00,1,1,1,1,1,1,48.1,100.0
+8089,2021-12-03 12:15:00,1,1,1,1,1,1,49.4,100.0
+8557,2021-12-01 11:45:00,1,1,1,1,1,1,57.3,100.0
+8562,2021-12-02 12:00:00,1,1,1,1,1,1,58.1,100.0

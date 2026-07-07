@@ -1,0 +1,266 @@
+RAPPORT - VALIDATION EXPLORATOIRE EXTERNE SUR LE CORPUS MCGILL
+Date : 2026-04-16
+
+1. Objectif
+
+L'objectif de cette étude était d'appliquer le pipeline gelé du mémoire
+(Isolation Forest + règles métier) sur un corpus externe issu des données
+McGill (Fall 2019), afin d'évaluer :
+
+- la transférabilité technique du pipeline vers un second corpus ;
+- l'existence éventuelle d'un signal cohérent avec les scores cliniques SLS
+  historiques disponibles ;
+- la possibilité d'utiliser ce corpus comme validation externe partielle
+  pour le projet personnel.
+
+
+2. Données utilisées
+
+2.1 Source capteurs
+
+Fichier source principal :
+/Users/alioubarry/PROJECT/mcgill_iot_cattle/Données completes/Données accelerometres/Fall 2019/Icetag/IceTags/@IceTag_Compiled_Lameness.xlsx
+
+Transformation réalisée :
+- lecture des feuilles Excel individuelles (1 feuille par vache) ;
+- agrégation minute par minute en bins de 15 minutes ;
+- export au format du pipeline personnel.
+
+Fichier obtenu :
+/Users/alioubarry/PROJECT/mcgill_iot_cattle/mcgill_brut.csv
+
+Caractéristiques du corpus converti :
+- 30 vaches ;
+- 93 187 bins de 15 minutes ;
+- période couverte : 2019-11-11 à 2019-12-14 ;
+- couverture de 34 jours par vache environ ;
+- couverture technique observée dans le pipeline : 100 % pour toutes les
+  vaches du corpus retenu.
+
+2.2 Labels cliniques
+
+Fichier labels :
+/Users/alioubarry/PROJECT/mcgill_iot_cattle/mcgill_sls_labels.csv
+
+Ces labels proviennent des scores SLS historiques (janvier-mars 2019).
+
+Important :
+les données IceTag utilisées ici sont de novembre-décembre 2019, soit environ
+8 mois plus tard. Il ne s'agit donc PAS d'une validation clinique synchrone.
+
+Conséquence :
+- on ne peut pas affirmer qu'une vache classée boiteuse en janvier boitait
+  encore en novembre ;
+- on ne peut pas considérer cette étude comme une validation clinique forte ;
+- les résultats doivent être interprétés comme une validation exploratoire
+  externe partielle uniquement.
+
+
+3. Pipeline appliqué
+
+Le notebook utilisé est :
+/Users/alioubarry/PROJECT/mcgill_iot_cattle/notebooks/03_run_pipeline_on_mcgill.ipynb
+
+Ce notebook utilise directement la pipeline du projet personnel :
+- /Users/alioubarry/PROJECT/core/pipeline.py
+- /Users/alioubarry/PROJECT/core/features.py
+- /Users/alioubarry/PROJECT/core/model_if.py
+- /Users/alioubarry/PROJECT/core/alerts.py
+
+Les paramètres sont relus depuis le gel du mémoire :
+/Users/alioubarry/PROJECT/data/final_thresholds_v1.json
+
+Paramètres clés utilisés :
+- interval = 15T
+- window_baseline = 24
+- contamination = 0.06
+- baseline_ratio = 0.6
+- random_state = 42
+- persist_hours = 7
+- alert_min = 2
+- mix_mode = MIX
+- mix_rate_thr = 0.24
+- z_low_thr = -2.0
+- z_high_thr = 2.0
+- cooldown_hours = 12
+- mi_z_high_thr = 2.2
+- coverage_min_pct = 25.0
+
+
+4. Sorties générées
+
+Le notebook a produit les fichiers suivants :
+
+- /Users/alioubarry/PROJECT/mcgill_iot_cattle/reports/mcgill_pipeline_summary.csv
+- /Users/alioubarry/PROJECT/mcgill_iot_cattle/reports/mcgill_pipeline_predictions.csv
+- /Users/alioubarry/PROJECT/mcgill_iot_cattle/reports/mcgill_pipeline_daily_alerts.csv
+- /Users/alioubarry/PROJECT/mcgill_iot_cattle/reports/mcgill_pipeline_vs_sls.csv
+
+
+5. Résultats principaux
+
+5.1 Résumé global par groupes cliniques
+
+Les groupes cliniques construits dans l'étude sont :
+- boiteuse_stricte : au moins un score SLS >= 2 ;
+- saine_stricte : SLS = 0 aux deux mesures ;
+- intermediaire : cas légers ou mixtes ;
+- sans_score : aucune information SLS disponible.
+
+Résultats moyens observés :
+
+boiteuse_stricte
+- n = 5
+- notifications moyennes = 3.4
+- starts moyens = 4.0
+- lameness_points moyens = 38.0
+
+intermediaire
+- n = 5
+- notifications moyennes = 3.2
+- starts moyens = 4.2
+- lameness_points moyens = 26.2
+
+saine_stricte
+- n = 2
+- notifications moyennes = 3.5
+- starts moyens = 3.5
+- lameness_points moyens = 36.0
+
+sans_score
+- n = 18
+- notifications moyennes = 3.61
+- starts moyens = 4.06
+- lameness_points moyens = 39.5
+
+Constat principal :
+les vaches historiquement boiteuses ne déclenchent pas, en moyenne, moins ou plus
+clairement d'alertes que les vaches historiquement saines. La séparation clinique
+attendue n'est donc pas nette sur ce test.
+
+
+5.2 Cas focus
+
+Vaches historiquement boiteuses :
+
+821
+- statut : boiteuse_persistante
+- SLS : 2 -> 2
+- notifications = 4
+- starts = 5
+- lameness_points = 35
+- if_anomaly_points = 218
+
+3444
+- statut : boiteuse_aggravee
+- SLS : 2 -> 4
+- notifications = 4
+- starts = 5
+- lameness_points = 54
+- if_anomaly_points = 204
+
+Vaches historiquement saines :
+
+2078
+- statut : saine
+- SLS : 0 -> 0
+- notifications = 0
+- starts = 0
+- lameness_points = 0
+- if_anomaly_points = 198
+
+5879
+- statut : saine
+- SLS : 0 -> 0
+- notifications = 7
+- starts = 7
+- lameness_points = 72
+- if_anomaly_points = 172
+
+Interprétation :
+- 821 et 3444 vont dans le sens attendu : elles déclenchent bien des alertes.
+- 2078 va également dans le bon sens : aucune notification.
+- 5879 constitue en revanche un contre-exemple majeur : vache historiquement
+  saine, mais fortement alertée par le pipeline.
+
+Ce cas empêche de conclure à une séparation clinique propre sur ce corpus.
+
+
+5.3 Vaches les plus alertées
+
+Top notifications observées :
+
+- 2062 (sans score) : 8 notifications
+- 8517 (sans score) : 8 notifications
+- 5879 (saine stricte) : 7 notifications
+- 2066 (sans score) : 6 notifications
+- 5865 (sans score) : 6 notifications
+
+Le fait qu'une vache saine stricte apparaisse parmi les animaux les plus alertés
+renforce la prudence d'interprétation.
+
+
+6. Lecture scientifique honnête
+
+Cette étude montre clairement que :
+
+1. le pipeline du mémoire est portable techniquement vers un corpus externe ;
+2. il peut être exécuté sans modification de fond sur les données McGill
+   converties au même format ;
+3. certaines vaches historiquement boiteuses produisent bien des alertes ;
+4. mais la comparaison aux labels historiques ne permet pas de démontrer une
+   validation clinique externe nette.
+
+La raison principale est le décalage temporel entre :
+- les labels SLS (janvier-mars 2019),
+- les signaux IceTag utilisés (novembre-décembre 2019).
+
+En conséquence, ce test ne doit pas être présenté comme :
+- une validation clinique,
+- ni une preuve de généralisation clinique.
+
+Il peut en revanche être présenté comme :
+- une validation exploratoire externe ;
+- une démonstration de transférabilité technique ;
+- un test préliminaire utile pour orienter les analyses futures sur le corpus McGill.
+
+
+7. Ce qu'on peut dire dans le mémoire ou un rapport
+
+Formulation recommandée :
+
+"Une application exploratoire du pipeline sur un corpus externe McGill a confirmé
+la transférabilité technique du système à un second jeu de données accélérométriques.
+En revanche, la comparaison avec les scores cliniques SLS historiques n'a pas permis
+de dégager une séparation nette entre animaux historiquement boiteux et sains,
+notamment en raison du décalage temporel important entre les évaluations cliniques
+et les données capteurs, ce qui empêche toute conclusion clinique forte."
+
+
+8. Recommandations
+
+Pour aller plus loin, les suites les plus utiles sont :
+
+1. inspecter en détail la vache 5879 afin de comprendre pourquoi elle déclenche
+   fortement malgré un historique sain ;
+2. comparer 5879 avec 821 et 3444 au niveau journalier et au niveau des épisodes ;
+3. tester si certaines règles métier sont trop permissives sur ce corpus externe ;
+4. si des labels cliniques synchrones deviennent disponibles, relancer le pipeline
+   sur cette nouvelle base pour une validation externe plus crédible ;
+5. utiliser ce corpus surtout comme base de travail du projet McGill plutôt que
+   comme preuve clinique pour le mémoire personnel.
+
+
+9. Conclusion
+
+L'étude est utile et doit être conservée, mais son message doit rester prudent :
+
+- réussite technique : OUI
+- transférabilité du pipeline : OUI
+- validation clinique externe forte : NON
+- intérêt méthodologique pour le projet McGill : OUI
+
+Le résultat le plus honnête est donc le suivant :
+ce corpus McGill apporte une valeur réelle comme test externe exploratoire et comme
+point d'entrée pour un projet de recherche complémentaire, mais il ne suffit pas à
+renforcer seul la validité clinique du mémoire principal.

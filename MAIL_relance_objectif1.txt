@@ -1,0 +1,37 @@
+À : tania.wolfe@mcgill.ca
+Cc : marjorie.cellier@mcgill.ca
+Objet : Re: Statement of Work – relance et point d'avancement (Objectif 1)
+
+------------------------------------------------------------------
+
+Bonjour Tania,
+
+Je me permets de revenir vers toi suite à mon message de la semaine dernière (SOW complété
++ quelques précisions), resté sans réponse. J'avance en parallèle, et voici un court point.
+
+Objectif 1 : le pipeline a été appliqué aux quatre corpus IceTag (Fall 2019, Summer 2019,
+Winter 2019, Fall 2021), sans modification et de façon reproductible — la portabilité
+technique est confirmée. J'ai aussi entamé la comparaison avec les observations cliniques
+(Tâche 1.2) et l'Objectif 2 (environnement et comportement).
+
+Pour poursuivre, j'aurais besoin de revenir sur les points soulevés dans mon précédent
+message, en particulier :
+
+1. Correspondance couleur de collier → Cow_ID (Fall 2019 et Fall 2021) : c'est ce qui me
+manque pour finaliser la comparaison comportementale sur ces deux essais.
+
+2. Fall 2021 : les téléchargements IceTag hebdomadaires antérieurs au 6 décembre (9, 16, 23
+novembre), ainsi que le statut des vaches Panem, PtiteNugget, Jellybelly et du tag 990.
+
+3. Objectif 4 (WELL-E et Mira) : pour tenir le calendrier, j'aurais besoin des scripts et
+d'une description du projet de Mira au plus tard le 3 août 2026.
+
+Une remarque utile sur la Tâche 1.2 : les cas de boiterie dont je dispose (scores SLS) sont
+légers, ce qui rend la comparaison peu concluante à ce stade. Si des données capteurs
+associées à des cas de boiterie plus marqués existent, elles permettraient une évaluation
+clinique plus solide.
+
+Merci d'avance, et n'hésite pas si tu as des questions.
+
+Cordialement,
+Aliou

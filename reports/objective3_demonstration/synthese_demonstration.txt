@@ -1,0 +1,10 @@
+DÉMONSTRATION IoT — bovins laitiers (synthèse)
+
+Données       : 4 essais, capteurs IceTag (activité) + HOBO (environnement)
+Pipeline      : Isolation Forest + règles métier, intervalles de 15 min
+Alertes       : 385 au total sur les 4 essais
+Usage         : dépistage d'anomalies comportementales (santé, chaleurs, vêlage)
+Limite clé    : boiterie légère non détectable par capteur d'activité
+Environnement : activité et alimentation liées au THI (effet thermique)
+
+Figures générées dans : /Users/alioubarry/PROJECT/mcgill_iot_cattle/reports/objective3_demonstration

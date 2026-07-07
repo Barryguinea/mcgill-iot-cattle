@@ -1,0 +1,692 @@
+{
+  "generated_at": "2026-06-02T11:18:10",
+  "season_summary": [
+    {
+      "season": "fall_2019",
+      "n_cows": 30,
+      "n_intervals": 93860,
+      "cow_days": 977.71,
+      "date_min": "2019-11-11",
+      "date_max": "2019-12-14",
+      "alerts": 105,
+      "alerts_per_100_cow_days": 10.74,
+      "mean_coverage_pct": 99.28,
+      "min_coverage_pct": 0.0,
+      "low_coverage_rows_lt75": 673,
+      "low_coverage_alerts": 0,
+      "days_with_alerts": 30,
+      "max_daily_alerts": 8,
+      "max_daily_alert_cows": 8,
+      "max_daily_alert_date": "2019-11-12"
+    },
+    {
+      "season": "summer_2019",
+      "n_cows": 18,
+      "n_intervals": 139111,
+      "cow_days": 1449.07,
+      "date_min": "2019-06-05",
+      "date_max": "2019-09-06",
+      "alerts": 127,
+      "alerts_per_100_cow_days": 8.76,
+      "mean_coverage_pct": 98.29,
+      "min_coverage_pct": 0.0,
+      "low_coverage_rows_lt75": 2385,
+      "low_coverage_alerts": 0,
+      "days_with_alerts": 69,
+      "max_daily_alerts": 4,
+      "max_daily_alert_cows": 4,
+      "max_daily_alert_date": "2019-06-14"
+    },
+    {
+      "season": "winter_2019",
+      "n_cows": 17,
+      "n_intervals": 136929,
+      "cow_days": 1426.34,
+      "date_min": "2019-01-16",
+      "date_max": "2019-04-17",
+      "alerts": 149,
+      "alerts_per_100_cow_days": 10.45,
+      "mean_coverage_pct": 94.45,
+      "min_coverage_pct": 0.0,
+      "low_coverage_rows_lt75": 7606,
+      "low_coverage_alerts": 0,
+      "days_with_alerts": 52,
+      "max_daily_alerts": 14,
+      "max_daily_alert_cows": 13,
+      "max_daily_alert_date": "2019-02-08"
+    },
+    {
+      "season": "fall_2021",
+      "n_cows": 10,
+      "n_intervals": 5131,
+      "cow_days": 53.45,
+      "date_min": "2021-11-30",
+      "date_max": "2021-12-06",
+      "alerts": 4,
+      "alerts_per_100_cow_days": 7.48,
+      "mean_coverage_pct": 100.0,
+      "min_coverage_pct": 100.0,
+      "low_coverage_rows_lt75": 0,
+      "low_coverage_alerts": 0,
+      "days_with_alerts": 3,
+      "max_daily_alerts": 2,
+      "max_daily_alert_cows": 2,
+      "max_daily_alert_date": "2021-12-01"
+    }
+  ],
+  "coherence_checks": [
+    {
+      "season": "fall_2019",
+      "summary_vs_predictions_rows_match": true,
+      "summary_alerts": 105,
+      "predictions_alerts": 105,
+      "alerts_only_rows": 105,
+      "alerts_counts_all_match": true,
+      "input_duplicate_cow_start": 0,
+      "prediction_duplicate_cow_t": 0,
+      "low_coverage_alerts": 0
+    },
+    {
+      "season": "summer_2019",
+      "summary_vs_predictions_rows_match": true,
+      "summary_alerts": 127,
+      "predictions_alerts": 127,
+      "alerts_only_rows": 127,
+      "alerts_counts_all_match": true,
+      "input_duplicate_cow_start": 0,
+      "prediction_duplicate_cow_t": 0,
+      "low_coverage_alerts": 0
+    },
+    {
+      "season": "winter_2019",
+      "summary_vs_predictions_rows_match": true,
+      "summary_alerts": 149,
+      "predictions_alerts": 149,
+      "alerts_only_rows": 149,
+      "alerts_counts_all_match": true,
+      "input_duplicate_cow_start": 0,
+      "prediction_duplicate_cow_t": 0,
+      "low_coverage_alerts": 0
+    },
+    {
+      "season": "fall_2021",
+      "summary_vs_predictions_rows_match": true,
+      "summary_alerts": 4,
+      "predictions_alerts": 4,
+      "alerts_only_rows": 4,
+      "alerts_counts_all_match": true,
+      "input_duplicate_cow_start": 0,
+      "prediction_duplicate_cow_t": 0,
+      "low_coverage_alerts": 0
+    }
+  ],
+  "skipped_files": [
+    {
+      "season": "fall_2019",
+      "skipped_files": 0,
+      "reasons": "{}"
+    },
+    {
+      "season": "summer_2019",
+      "skipped_files": 0,
+      "reasons": "{}"
+    },
+    {
+      "season": "winter_2019",
+      "skipped_files": 16,
+      "reasons": "{\"cow_id_introuvable\": 16}"
+    },
+    {
+      "season": "fall_2021",
+      "skipped_files": 0,
+      "reasons": "{}"
+    }
+  ],
+  "global": {
+    "unique_cows": 62,
+    "alerts": 385,
+    "cow_days": 3906.57,
+    "alerts_per_100_cow_days": 9.86
+  },
+  "top_global_cows": [
+    {
+      "Cow": "2062",
+      "seasons": "fall_2019,summer_2019",
+      "n_seasons": 2,
+      "alerts": 25,
+      "cow_days": 125.69,
+      "mean_coverage": 100.0,
+      "alerts_per_100_cow_days": 19.89
+    },
+    {
+      "Cow": "8508",
+      "seasons": "winter_2019",
+      "n_seasons": 1,
+      "alerts": 19,
+      "cow_days": 90.81,
+      "mean_coverage": 99.95,
+      "alerts_per_100_cow_days": 20.92
+    },
+    {
+      "Cow": "2056",
+      "seasons": "winter_2019",
+      "n_seasons": 1,
+      "alerts": 17,
+      "cow_days": 90.81,
+      "mean_coverage": 99.95,
+      "alerts_per_100_cow_days": 18.72
+    },
+    {
+      "Cow": "2081",
+      "seasons": "fall_2019,winter_2019",
+      "n_seasons": 2,
+      "alerts": 16,
+      "cow_days": 123.57,
+      "mean_coverage": 99.98,
+      "alerts_per_100_cow_days": 12.95
+    },
+    {
+      "Cow": "5871",
+      "seasons": "fall_2019,summer_2019",
+      "n_seasons": 2,
+      "alerts": 15,
+      "cow_days": 125.68,
+      "mean_coverage": 100.0,
+      "alerts_per_100_cow_days": 11.94
+    },
+    {
+      "Cow": "5250",
+      "seasons": "winter_2019",
+      "n_seasons": 1,
+      "alerts": 13,
+      "cow_days": 90.81,
+      "mean_coverage": 99.95,
+      "alerts_per_100_cow_days": 14.32
+    },
+    {
+      "Cow": "3437",
+      "seasons": "fall_2019,winter_2019",
+      "n_seasons": 2,
+      "alerts": 13,
+      "cow_days": 123.57,
+      "mean_coverage": 96.13,
+      "alerts_per_100_cow_days": 10.52
+    },
+    {
+      "Cow": "3443",
+      "seasons": "winter_2019",
+      "n_seasons": 1,
+      "alerts": 12,
+      "cow_days": 90.81,
+      "mean_coverage": 92.35,
+      "alerts_per_100_cow_days": 13.21
+    },
+    {
+      "Cow": "2063",
+      "seasons": "fall_2019,winter_2019",
+      "n_seasons": 2,
+      "alerts": 12,
+      "cow_days": 123.52,
+      "mean_coverage": 99.98,
+      "alerts_per_100_cow_days": 9.71
+    },
+    {
+      "Cow": "5258",
+      "seasons": "summer_2019",
+      "n_seasons": 1,
+      "alerts": 11,
+      "cow_days": 78.04,
+      "mean_coverage": 100.0,
+      "alerts_per_100_cow_days": 14.1
+    },
+    {
+      "Cow": "8506",
+      "seasons": "winter_2019",
+      "n_seasons": 1,
+      "alerts": 11,
+      "cow_days": 90.81,
+      "mean_coverage": 99.95,
+      "alerts_per_100_cow_days": 12.11
+    },
+    {
+      "Cow": "419",
+      "seasons": "summer_2019",
+      "n_seasons": 1,
+      "alerts": 11,
+      "cow_days": 92.92,
+      "mean_coverage": 100.0,
+      "alerts_per_100_cow_days": 11.84
+    }
+  ],
+  "top_by_season": [
+    {
+      "Cow": "8517",
+      "n_bins": 3072,
+      "lameness_notifs": 8,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2019",
+      "cow_days": 32.0,
+      "alerts_per_100_cow_days": 25.0
+    },
+    {
+      "Cow": "2062",
+      "n_bins": 3144,
+      "lameness_notifs": 8,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2019",
+      "cow_days": 32.75,
+      "alerts_per_100_cow_days": 24.43
+    },
+    {
+      "Cow": "5879",
+      "n_bins": 3141,
+      "lameness_notifs": 7,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2019",
+      "cow_days": 32.72,
+      "alerts_per_100_cow_days": 21.39
+    },
+    {
+      "Cow": "2066",
+      "n_bins": 3142,
+      "lameness_notifs": 6,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2019",
+      "cow_days": 32.73,
+      "alerts_per_100_cow_days": 18.33
+    },
+    {
+      "Cow": "5865",
+      "n_bins": 3144,
+      "lameness_notifs": 6,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2019",
+      "cow_days": 32.75,
+      "alerts_per_100_cow_days": 18.32
+    },
+    {
+      "Cow": "8525",
+      "n_bins": 3072,
+      "lameness_notifs": 5,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2019",
+      "cow_days": 32.0,
+      "alerts_per_100_cow_days": 15.62
+    },
+    {
+      "Cow": "8527",
+      "n_bins": 3072,
+      "lameness_notifs": 5,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2019",
+      "cow_days": 32.0,
+      "alerts_per_100_cow_days": 15.62
+    },
+    {
+      "Cow": "2081",
+      "n_bins": 3141,
+      "lameness_notifs": 5,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2019",
+      "cow_days": 32.72,
+      "alerts_per_100_cow_days": 15.28
+    },
+    {
+      "Cow": "8557",
+      "n_bins": 457,
+      "lameness_notifs": 1,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2021",
+      "cow_days": 4.76,
+      "alerts_per_100_cow_days": 21.01
+    },
+    {
+      "Cow": "8562",
+      "n_bins": 582,
+      "lameness_notifs": 1,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2021",
+      "cow_days": 6.06,
+      "alerts_per_100_cow_days": 16.49
+    },
+    {
+      "Cow": "2041",
+      "n_bins": 582,
+      "lameness_notifs": 1,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2021",
+      "cow_days": 6.06,
+      "alerts_per_100_cow_days": 16.49
+    },
+    {
+      "Cow": "8089",
+      "n_bins": 584,
+      "lameness_notifs": 1,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2021",
+      "cow_days": 6.08,
+      "alerts_per_100_cow_days": 16.44
+    },
+    {
+      "Cow": "8057",
+      "n_bins": 583,
+      "lameness_notifs": 0,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2021",
+      "cow_days": 6.07,
+      "alerts_per_100_cow_days": 0.0
+    },
+    {
+      "Cow": "8056",
+      "n_bins": 584,
+      "lameness_notifs": 0,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2021",
+      "cow_days": 6.08,
+      "alerts_per_100_cow_days": 0.0
+    },
+    {
+      "Cow": "8080",
+      "n_bins": 585,
+      "lameness_notifs": 0,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2021",
+      "cow_days": 6.09,
+      "alerts_per_100_cow_days": 0.0
+    },
+    {
+      "Cow": "8537",
+      "n_bins": 582,
+      "lameness_notifs": 0,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "fall_2021",
+      "cow_days": 6.06,
+      "alerts_per_100_cow_days": 0.0
+    },
+    {
+      "Cow": "2062",
+      "n_bins": 8922,
+      "lameness_notifs": 17,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "summer_2019",
+      "cow_days": 92.94,
+      "alerts_per_100_cow_days": 18.29
+    },
+    {
+      "Cow": "5258",
+      "n_bins": 7492,
+      "lameness_notifs": 11,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "summer_2019",
+      "cow_days": 78.04,
+      "alerts_per_100_cow_days": 14.1
+    },
+    {
+      "Cow": "419",
+      "n_bins": 8920,
+      "lameness_notifs": 11,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "summer_2019",
+      "cow_days": 92.92,
+      "alerts_per_100_cow_days": 11.84
+    },
+    {
+      "Cow": "8520",
+      "n_bins": 8920,
+      "lameness_notifs": 10,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "summer_2019",
+      "cow_days": 92.92,
+      "alerts_per_100_cow_days": 10.76
+    },
+    {
+      "Cow": "8536",
+      "n_bins": 8921,
+      "lameness_notifs": 10,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "summer_2019",
+      "cow_days": 92.93,
+      "alerts_per_100_cow_days": 10.76
+    },
+    {
+      "Cow": "5871",
+      "n_bins": 8921,
+      "lameness_notifs": 10,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "summer_2019",
+      "cow_days": 92.93,
+      "alerts_per_100_cow_days": 10.76
+    },
+    {
+      "Cow": "5857",
+      "n_bins": 8920,
+      "lameness_notifs": 9,
+      "coverage_mean": 97.72,
+      "coverage_min": 0.0,
+      "season": "summer_2019",
+      "cow_days": 92.92,
+      "alerts_per_100_cow_days": 9.69
+    },
+    {
+      "Cow": "5313",
+      "n_bins": 8921,
+      "lameness_notifs": 9,
+      "coverage_mean": 100.0,
+      "coverage_min": 100.0,
+      "season": "summer_2019",
+      "cow_days": 92.93,
+      "alerts_per_100_cow_days": 9.69
+    },
+    {
+      "Cow": "8508",
+      "n_bins": 8718,
+      "lameness_notifs": 19,
+      "coverage_mean": 99.95,
+      "coverage_min": 0.0,
+      "season": "winter_2019",
+      "cow_days": 90.81,
+      "alerts_per_100_cow_days": 20.92
+    },
+    {
+      "Cow": "2056",
+      "n_bins": 8718,
+      "lameness_notifs": 17,
+      "coverage_mean": 99.95,
+      "coverage_min": 0.0,
+      "season": "winter_2019",
+      "cow_days": 90.81,
+      "alerts_per_100_cow_days": 18.72
+    },
+    {
+      "Cow": "5250",
+      "n_bins": 8718,
+      "lameness_notifs": 13,
+      "coverage_mean": 99.95,
+      "coverage_min": 0.0,
+      "season": "winter_2019",
+      "cow_days": 90.81,
+      "alerts_per_100_cow_days": 14.32
+    },
+    {
+      "Cow": "3443",
+      "n_bins": 8718,
+      "lameness_notifs": 12,
+      "coverage_mean": 92.35,
+      "coverage_min": 0.0,
+      "season": "winter_2019",
+      "cow_days": 90.81,
+      "alerts_per_100_cow_days": 13.21
+    },
+    {
+      "Cow": "8506",
+      "n_bins": 8718,
+      "lameness_notifs": 11,
+      "coverage_mean": 99.95,
+      "coverage_min": 0.0,
+      "season": "winter_2019",
+      "cow_days": 90.81,
+      "alerts_per_100_cow_days": 12.11
+    },
+    {
+      "Cow": "2081",
+      "n_bins": 8722,
+      "lameness_notifs": 11,
+      "coverage_mean": 99.95,
+      "coverage_min": 0.0,
+      "season": "winter_2019",
+      "cow_days": 90.85,
+      "alerts_per_100_cow_days": 12.11
+    },
+    {
+      "Cow": "2047",
+      "n_bins": 6219,
+      "lameness_notifs": 9,
+      "coverage_mean": 99.94,
+      "coverage_min": 0.0,
+      "season": "winter_2019",
+      "cow_days": 64.78,
+      "alerts_per_100_cow_days": 13.89
+    },
+    {
+      "Cow": "3437",
+      "n_bins": 8718,
+      "lameness_notifs": 9,
+      "coverage_mean": 92.27,
+      "coverage_min": 0.0,
+      "season": "winter_2019",
+      "cow_days": 90.81,
+      "alerts_per_100_cow_days": 9.91
+    }
+  ],
+  "winter_early_feb": {
+    "alerts_feb_1_15": 94,
+    "total_alerts": 149,
+    "pct_alerts_feb_1_15": 63.1,
+    "cows_touched_feb_1_15": 14,
+    "total_winter_cows": 17,
+    "top_days": [
+      {
+        "date": "2019-02-08",
+        "alerts": 14,
+        "cows": 13,
+        "season": "winter_2019"
+      },
+      {
+        "date": "2019-02-07",
+        "alerts": 13,
+        "cows": 12,
+        "season": "winter_2019"
+      },
+      {
+        "date": "2019-02-04",
+        "alerts": 11,
+        "cows": 11,
+        "season": "winter_2019"
+      },
+      {
+        "date": "2019-02-05",
+        "alerts": 11,
+        "cows": 9,
+        "season": "winter_2019"
+      },
+      {
+        "date": "2019-02-03",
+        "alerts": 10,
+        "cows": 9,
+        "season": "winter_2019"
+      },
+      {
+        "date": "2019-02-01",
+        "alerts": 8,
+        "cows": 8,
+        "season": "winter_2019"
+      },
+      {
+        "date": "2019-02-06",
+        "alerts": 8,
+        "cows": 7,
+        "season": "winter_2019"
+      },
+      {
+        "date": "2019-02-02",
+        "alerts": 6,
+        "cows": 6,
+        "season": "winter_2019"
+      }
+    ]
+  },
+  "objective1_2_alignment_summary": [
+    {
+      "metric": "winter_alerts_total",
+      "value": 149
+    },
+    {
+      "metric": "winter_scans_total",
+      "value": 42
+    },
+    {
+      "metric": "alerts_with_matched_scan_within_1d",
+      "value": 16
+    },
+    {
+      "metric": "alerts_with_same_day_scan",
+      "value": 7
+    },
+    {
+      "metric": "scans_with_same_day_alert",
+      "value": 7
+    },
+    {
+      "metric": "scans_with_alert_within_1d",
+      "value": 11
+    }
+  ],
+  "objective1_2_readiness": [
+    {
+      "season": "winter_2019",
+      "alignment_status": "done",
+      "reason": "Cow_ID and Date are available in long-format scan table.",
+      "next_action": "Interpret concordance and refine behavior categories with domain team."
+    },
+    {
+      "season": "summer_2019",
+      "alignment_status": "not_done_yet",
+      "reason": "Scan workbook has Cow IDs and scan codes, but exact dates/times must be mapped from Week sheets before alert alignment.",
+      "next_action": "Extract week/date mapping from protocol or workbook metadata, then run same-day alignment."
+    },
+    {
+      "season": "fall_2019",
+      "alignment_status": "not_done_yet",
+      "reason": "Scan workbook uses paddock/collar color labels rather than direct Cow_ID in scan rows.",
+      "next_action": "Obtain or reconstruct color/paddock-to-Cow_ID mapping for weeks 4, 5, 5.2."
+    },
+    {
+      "season": "fall_2021",
+      "alignment_status": "not_done_yet",
+      "reason": "Scan workbook uses collar/color/group labels and most scan dates precede the IceTag window; mapping and overlap must be confirmed.",
+      "next_action": "Use scan sheets around Nov 30-Dec 6 and map color/group labels to Cow_ID."
+    }
+  ]
+}

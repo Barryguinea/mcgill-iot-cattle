@@ -1,0 +1,6 @@
+season,n_cows,pearson_old_vs_hybrid_by_cow,spearman_old_vs_hybrid_by_cow,old_total,hybrid_total
+GLOBAL,75,0.726,0.746,385,1179
+fall_2019,30,0.072,-0.001,105,299
+summer_2019,18,0.458,0.319,127,421
+winter_2019,17,0.551,0.521,149,441
+fall_2021,10,0.491,0.525,4,18
