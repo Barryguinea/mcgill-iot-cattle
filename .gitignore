@@ -34,3 +34,11 @@ s41598-*.pdf
 # Documents financiers / personnels (factures) — ne pas versionner
 Facture_*.docx
 Facture_*.pdf
+SOW Alliou - Complété (avec montants).docx
+SOW*montant*.docx
+
+# Dossier de facturation (chèque annulé, formulaire fournisseur, factures) — CONFIDENTIEL, ne jamais versionner
+Facturation/
+*Chèque*Annulé*
+*ChequeAnnule*
+determination_du_statut*.pdf

@@ -1,4 +1,4 @@
-DÉMONSTRATION IoT — bovins laitiers (synthèse)
+DÉMONSTRATION IoT — vaches laitières (synthèse)
 
 Données       : 4 essais, capteurs IceTag (activité) + HOBO (environnement)
 Pipeline      : Isolation Forest + règles métier, intervalles de 15 min

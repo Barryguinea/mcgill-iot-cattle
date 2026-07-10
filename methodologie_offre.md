@@ -1,4 +1,4 @@
-# Proposition méthodologique — Projet IoT Bovins Laitiers
+# Proposition méthodologique — Projet IoT Vaches Laitières
 
 ## 1. Compréhension du contexte
 

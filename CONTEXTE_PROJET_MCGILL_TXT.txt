@@ -21,7 +21,7 @@ Le but n'est pas seulement de "faire du ML", mais de proposer une méthodologie 
 Le mail reçu dit en substance:
 - considérer ce projet comme une extension de mes travaux IoT, en particulier sur les accéléromètres
 - objectif 1: utiliser les données IoT de comportement + données environnementales pour comprendre l'effet de l'environnement sur le comportement
-- objectif 2: développer un notebook Jupyter pour l'utilisation de l'IoT dans le cadre des bovins laitiers
+- objectif 2: développer un notebook Jupyter pour l'utilisation de l'IoT dans le cadre des vaches laitières
 - il existe déjà des données issues d'expériences menées entre 2018 et 2023
 - l'article de Marjorie sert de point de départ
 - il est demandé de partir de ces premiers résultats pour proposer une offre de service / méthodologie détaillée

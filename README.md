@@ -1,6 +1,6 @@
-# Projet McGill — IoT Bovins Laitiers
+# Projet McGill — IoT Vaches Laitières
 
-Analyse de données IoT (capteurs IceTag + HOBO) pour bovins laitiers en stabulation entravée,
+Analyse de données IoT (capteurs IceTag + HOBO) pour vaches laitières en stabulation entravée,
 dans le cadre du projet Well-E (collaboration UQAM × McGill).
 
 ## Équipe
