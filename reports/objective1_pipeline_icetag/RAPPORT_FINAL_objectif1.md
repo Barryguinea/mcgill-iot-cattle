@@ -125,6 +125,21 @@ de démarche), non de l'algorithme. À titre de comparaison, la validation du m�
 l'injection d'anomalies fortes (−90 % d'activité) ; la boiterie réelle légère ne produit qu'un
 écart de ~1 %.
 
+### 3.1 Comparaison avec la pipeline V3 (HYPO + INSTABILITÉ)
+
+La pipeline **V3** — l'approche du mémoire actuel (branches HYPO + INSTABILITÉ + fusion
+hiérarchique), à distinguer de la pipeline initiale IF + règles utilisée pour l'Objectif 1 — a
+été appliquée aux mêmes 4 corpus à titre comparatif. Le comparateur IF recalculé par la V3
+reproduit exactement les 385 alertes initiales (385/385), confirmant l'identité des entrées.
+
+- Pipeline initiale (résultat livré) : **385 alertes** ; V3 hybride : **1179 alertes** (×3,1).
+- La V3 est plus sensible mais **change la définition** (alerte comportementale à vérifier, non
+  boiterie clinique) et augmente la charge de vérification ; elle reste à recalibrer.
+- **Important :** la sensibilité/spécificité *à la boiterie* n'est pas mesurable sur McGill
+  (absence de vérité-terrain clinique) ; « plus d'alertes » ne signifie pas « détecte mieux ».
+
+Détail complet : `memoirev3_comparison/CADRAGE_pipeline_initiale_vs_V3.md`.
+
 ---
 
 ## 4. Portée et applications
