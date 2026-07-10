@@ -30,3 +30,7 @@ __pycache__/
 
 # PDF d'article de référence (volumineux, disponible en ligne)
 s41598-*.pdf
+
+# Documents financiers / personnels (factures) — ne pas versionner
+Facture_*.docx
+Facture_*.pdf
