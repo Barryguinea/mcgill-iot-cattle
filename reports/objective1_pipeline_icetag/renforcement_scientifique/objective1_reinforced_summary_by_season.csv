@@ -1,0 +1,5 @@
+season,n_cows,n_intervals,first_T,last_T,initial_notifications,alerted_cows,collective_flagged,herd_specific_signal,mean_lame_confidence,mean_coverage_pct,A_individuelle_prioritaire,B_individuelle_a_verifier,C_probable_evenement_collectif,D_qualite_ou_contexte_insuffisant,collective_flagged_pct,herd_specific_signal_pct,old_lameness_notifs,v3_behavioral_hypo_notifs,v3_instability_notifs,v3_hybrid_notifs,old_rate_per_100_cow_days,v3_hybrid_rate_per_100_cow_days
+fall_2019,30,93860,2019-11-11 18:45:00,2019-12-14 13:00:00,105,26,47,26,49.11714285714286,100.0,7,51,47,0,0.44761904761904764,0.24761904761904763,105,198,197,299,10.739,30.582
+fall_2021,10,5131,2021-11-30 09:00:00,2021-12-06 11:00:00,4,4,0,0,53.225,100.0,0,4,0,0,0.0,0.0,4,15,13,18,7.484,33.678
+summer_2019,18,139111,2019-06-05 13:00:00,2019-09-06 12:00:00,127,17,17,28,46.848031496062994,100.0,16,94,17,0,0.13385826771653545,0.2204724409448819,127,254,324,421,8.764,29.053
+winter_2019,17,136929,2019-01-16 15:15:00,2019-04-17 11:30:00,149,17,89,34,48.22818791946309,100.0,14,46,89,0,0.5973154362416108,0.22818791946308725,149,279,320,441,10.446,30.918

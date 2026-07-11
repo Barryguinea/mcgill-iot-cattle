@@ -159,6 +159,37 @@ légère reste hors de portée d'un capteur d'activité.
 
 ---
 
+## 5.1 Addendum — renforcement scientifique appliqué
+
+Un addendum reproductible a été ajouté le 2026-07-11 pour renforcer l'interprétation de
+l'Objectif 1 sans modifier la pipeline initiale livrée ni le dossier `memoirev3`.
+
+Méthode ajoutée :
+- normalisation de chaque vache par rapport à la médiane contemporaine du troupeau ;
+- identification des épisodes collectifs (plusieurs vaches alertées dans une fenêtre courte) ;
+- reclassification des 385 alertes en niveaux de confiance A/B/C/D ;
+- maintien de la comparaison V3 comme annexe méthodologique, sans la substituer au livrable SOW.
+
+Résultat synthétique :
+- les 385 notifications initiales sont conservées ;
+- Winter 2019 est fortement marqué par un contexte collectif : 89/149 alertes reclassées en
+  `C_probable_evenement_collectif`, cohérent avec l'épisode documenté du 1 au 15 février ;
+- les alertes non collectives sont désormais priorisables : A = alerte individuelle prioritaire,
+  B = alerte individuelle à vérifier, C = contexte collectif, D = qualité/contexte insuffisant.
+
+Fichiers :
+- notebook : `notebooks/13_objectif1_renforcement_scientifique.ipynb` ;
+- script : `run_objective1_reinforcement.py` ;
+- rapport : `renforcement_scientifique/RAPPORT_renforcement_objectif1.md` ;
+- tableaux : `renforcement_scientifique/objective1_reinforced_*.csv`.
+
+Lecture scientifique : cet addendum rend l'Objectif 1 plus défendable en séparant les alertes
+individuelles plausibles des alertes probablement liées à un contexte de troupeau. Il ne constitue
+pas une validation clinique de boiterie : la sensibilité et la spécificité restent non mesurables
+sans labels synchrones et cas cliniquement nets.
+
+---
+
 ## 6. État des demandes à McGill
 1. Mapping couleur → Cow_ID : **reçu** (`Scan_Tot_newVersion_SMN.xlsx`) → Tâche 1.2 débloquée.
 2. Données Fall 2021 manquantes + statut de 3 vaches et du tag 990 : en cours (Shabnaz).
@@ -168,7 +199,8 @@ légère reste hors de portée d'un capteur d'activité.
 ---
 
 ## 7. Livrables produits
-- Notebooks : 02 (conversion), 05 (pipeline 4 saisons, Tâche 1.1), 10 (concordance, Tâche 1.2).
+- Notebooks : 02 (conversion), 05 (pipeline 4 saisons, Tâche 1.1), 10 (concordance, Tâche 1.2),
+  13 (renforcement scientifique de l'Objectif 1).
 - Notebooks complémentaires : 06 et 07 (séparabilité, hors SOW).
 - Note : le notebook 03 (comparaison SLS Fall 2019 non synchrone) est conservé pour traçabilité
   mais marqué comme superseded ; sa comparaison clinique n'est pas valide.
