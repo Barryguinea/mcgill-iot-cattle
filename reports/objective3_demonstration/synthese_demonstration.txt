@@ -1,10 +1,9 @@
-DÉMONSTRATION IoT — vaches laitières (synthèse)
+OBJECTIF 3 — NOTEBOOK DE DÉMONSTRATION IoT
 
-Données       : 4 essais, capteurs IceTag (activité) + HOBO (environnement)
-Pipeline      : Isolation Forest + règles métier, intervalles de 15 min
-Alertes       : 385 au total sur les 4 essais
-Usage         : dépistage d'anomalies comportementales (santé, chaleurs, vêlage)
-Limite clé    : boiterie légère non détectable par capteur d'activité
-Environnement : activité et alimentation liées au THI (effet thermique)
-
-Figures générées dans : /Users/alioubarry/PROJECT/mcgill_iot_cattle/reports/objective3_demonstration
+Statut : notebook exécuté intégralement et sans erreur.
+Données : échantillon IceTag de l'été 2019, résultats multi-saisons et données THI-comportement.
+Pipeline : exécution réelle sur la vache 2062, 8 922 intervalles et 17 alertes brutes.
+Objectif 1 : 385 alertes brutes, requalifiées en 37 A, 195 B et 153 C.
+Objectif 2 : association globale THI-activité positive; effet intra-jour +0,061, p = 0,364, non concluant.
+Comportement : signal alimentation-THI suggestif sur huit jours indépendants.
+Interprétation : dépistage comportemental et analyse exploratoire, sans diagnostic clinique ni causalité démontrée.

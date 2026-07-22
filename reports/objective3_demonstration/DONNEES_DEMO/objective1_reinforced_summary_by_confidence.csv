@@ -1,0 +1,11 @@
+season,reinforced_confidence_level,notifications,cows,mean_lame_confidence,mean_coverage_pct,collective_alerts,herd_specific_signals
+fall_2019,A_individuelle_prioritaire,7,4,49.957142857142856,100.0,0,7
+fall_2019,B_individuelle_a_verifier,51,24,47.93921568627451,100.0,0,2
+fall_2019,C_probable_evenement_collectif,47,21,50.270212765957446,100.0,47,17
+fall_2021,B_individuelle_a_verifier,4,4,53.225,100.0,0,0
+summer_2019,A_individuelle_prioritaire,16,8,49.975,100.0,0,16
+summer_2019,B_individuelle_a_verifier,94,16,45.981914893617024,100.0,0,6
+summer_2019,C_probable_evenement_collectif,17,10,48.69411764705882,100.0,17,6
+winter_2019,A_individuelle_prioritaire,14,6,51.18571428571429,100.0,0,14
+winter_2019,B_individuelle_a_verifier,46,15,47.10434782608696,100.0,0,1
+winter_2019,C_probable_evenement_collectif,89,14,48.3438202247191,100.0,89,19
