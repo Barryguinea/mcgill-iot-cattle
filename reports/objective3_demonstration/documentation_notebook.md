@@ -4,6 +4,7 @@
 
 - Notebook final : `code/12_objectif3_notebook_demonstration.ipynb`
 - Documentation : `RAPPORTS/Objectif3_guide_utilisation.docx` et ce fichier
+- Support de présentation additionnel : `RAPPORTS/Objectif3_presentation_detaillee.pptx`
 
 ## Exécution
 

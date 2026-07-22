@@ -24,6 +24,7 @@ DATA_DEMO = REPORTS / "DONNEES_DEMO"
 NOTEBOOK = PROJECT / "notebooks" / "12_objectif3_notebook_demonstration.ipynb"
 DOCUMENTATION = REPORTS / "documentation_notebook.md"
 WORD_REPORT = REPORTS / "Objectif3_guide_utilisation.docx"
+PRESENTATION = REPORTS / "Objectif3_presentation_detaillee.pptx"
 PACKAGE = (
     Path.home()
     / "Desktop"
@@ -658,6 +659,7 @@ def _build_documentation() -> None:
 
 - Notebook final : `code/12_objectif3_notebook_demonstration.ipynb`
 - Documentation : `RAPPORTS/Objectif3_guide_utilisation.docx` et ce fichier
+- Support de présentation additionnel : `RAPPORTS/Objectif3_presentation_detaillee.pptx`
 
 ## Exécution
 
@@ -701,7 +703,8 @@ comportement restent exploratoires.
         bold=True,
         color=BLUE,
     )
-    _add_label(doc, "Livrables :", "notebook final, documentation et sorties de démonstration")
+    _add_label(doc, "Livrables SOW :", "notebook final et documentation")
+    _add_label(doc, "Supports inclus :", "données compactes, sorties et présentation détaillée")
     _add_label(doc, "Statut :", "fonctionnel, exécuté intégralement et vérifié")
 
     doc.add_heading("1. Correspondance avec le SOW", level=1)
@@ -764,7 +767,7 @@ comportement restent exploratoires.
             ["DONNEES_DEMO/", "échantillon IceTag et tables compactes des Objectifs 1 et 2"],
             ["RESULTATS/", "figures et synthèse générées par le notebook"],
             ["DOCUMENTATION/", "documentation textuelle de l'exécution"],
-            ["RAPPORTS/", "présent guide Word"],
+            ["RAPPORTS/", "guide Word et présentation détaillée"],
         ],
         [2400, 6960],
     )
@@ -784,6 +787,8 @@ def _build_package() -> None:
     missing = [name for name in expected_outputs if not (REPORTS / name).exists()]
     if missing:
         raise FileNotFoundError(f"Sorties du notebook manquantes: {missing}")
+    if not PRESENTATION.exists():
+        raise FileNotFoundError(f"Présentation manquante: {PRESENTATION}")
     if PACKAGE.exists():
         shutil.rmtree(PACKAGE)
     for folder in ["code/core", "DONNEES_DEMO", "RESULTATS", "DOCUMENTATION", "RAPPORTS"]:
@@ -799,14 +804,19 @@ def _build_package() -> None:
         shutil.copy2(REPORTS / name, PACKAGE / "RESULTATS" / name)
     shutil.copy2(DOCUMENTATION, PACKAGE / "DOCUMENTATION" / DOCUMENTATION.name)
     shutil.copy2(WORD_REPORT, PACKAGE / "RAPPORTS" / WORD_REPORT.name)
+    shutil.copy2(PRESENTATION, PACKAGE / "RAPPORTS" / PRESENTATION.name)
 
     readme = """OBJECTIF 3 — NOTEBOOK DE DÉMONSTRATION IoT
 
 À ouvrir en premier : RAPPORTS/Objectif3_guide_utilisation.docx
+Support de présentation : RAPPORTS/Objectif3_presentation_detaillee.pptx
 
 Livrables SOW :
 - code/12_objectif3_notebook_demonstration.ipynb
 - DOCUMENTATION/documentation_notebook.md
+
+Support additionnel :
+- RAPPORTS/Objectif3_presentation_detaillee.pptx (12 diapositives avec notes)
 
 Exécution :
 1. Ouvrir le notebook dans Jupyter.
