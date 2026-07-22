@@ -1,0 +1,12 @@
+check,value,status
+continuous_orientation_rows,314715,PASS
+continuous_orientation_finite_rows,314715,PASS
+continuous_orientation_zero_vectors,0,PASS
+continuous_orientation_max_unit_norm_deviation,2.220446049250313e-16,PASS
+continuous_orientation_runtime_seconds,26.96,PASS
+occupancy_visual_heatmaps,13,PASS
+occupancy_normalized_maps,13,PASS
+occupancy_raw_count_arrays,13,PASS
+annotated_preview_frames,37,PASS
+annotated_preview_resolution,1280x720,PASS
+annotated_preview_readable,true,PASS

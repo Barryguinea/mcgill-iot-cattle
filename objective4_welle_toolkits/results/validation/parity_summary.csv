@@ -1,0 +1,7 @@
+check,received_value,cleaned_value,max_absolute_difference,status
+conversion_table,314715,314715,0.0,PASS
+distance_matrix,73,73,0.0,PASS
+total_distance,,,0.0,PASS
+mean_velocity,,,0.0,PASS
+mean_acceleration,,,0.0,PASS
+orientation_smoothing_2000_frames,0.06887183402432129,0.042298874992411584,0.0,PASS

@@ -1,0 +1,11 @@
+{
+  "input_mat": "/Users/alioubarry/PROJECT/mcgill_iot_cattle/UQAM - Matlab vers Python (Aliou)/27MARS-V1(Exemple)/McGillWi2024SNA_SNA_OUT_27MAR2024_360V1_All_0_new_cow_gs.mat",
+  "received_code_dir": "/Users/alioubarry/PROJECT/mcgill_iot_cattle/UQAM - Matlab vers Python (Aliou)/Scripts Python (post processing)",
+  "clean_code_dir": "/Users/alioubarry/PROJECT/mcgill_iot_cattle/objective4_welle_toolkits/code",
+  "rows": 314715,
+  "cows": 13,
+  "sampled_frames": 36331,
+  "manual_rows": 2113,
+  "all_checks_passed": true,
+  "matlab_runtime_comparison": "Not executed: no licensed MATLAB runtime or reference MATLAB outputs were supplied. Formula-level correspondence is reviewed separately."
+}
