@@ -1,0 +1,3 @@
+modele,unite_analyse,terme,coef,ic95_bas,ic95_haut,p,n
+Steps ~ THI + THI² + heure + jour,timestamp troupeau-15 min,"THI centré, linéaire",0.07942,-0.05622,0.21506,0.25110982569498896,5795
+Steps ~ THI + THI² + heure + jour,timestamp troupeau-15 min,THI centré au carré,0.0053,-0.00325,0.01384,0.22446182635930467,5795

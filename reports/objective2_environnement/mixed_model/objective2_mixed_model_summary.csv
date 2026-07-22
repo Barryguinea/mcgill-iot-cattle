@@ -1,0 +1,7 @@
+modele,unite_analyse,controles,coef_THI,ic95_bas,ic95_haut,p,n,interpretation
+Spearman naïf : Steps ~ THI,bin vache-15 min,aucun,0.1961,,,0.0,87501,Descriptif seulement : duplique l'exposition THI entre vaches.
+Modèle mixte vache : Steps ~ THI + heure,bin vache-15 min,heure; intercept aléatoire vache,0.1984,0.1802,0.2165,7.69346329552939e-102,87501,"Association ajustée pour l'heure, sans contrôle propre au jour."
+Troupeau-timestamp : Steps ~ THI + heure,timestamp troupeau-15 min,heure; erreurs HAC 24 h,0.2214,0.1413,0.3015,6.147984781716001e-08,5795,"Association positive entre timestamps, encore exposée au confondant jour."
+Troupeau-timestamp : Steps ~ THI + heure + jour,timestamp troupeau-15 min,heure; jour fixe; erreurs HAC 24 h,0.0608,-0.0704,0.192,0.3637994421190438,5795,Effet intra-jour non concluant : le signal dépend fortement des jours.
+Troupeau-timestamp : Motion Index ~ THI + heure + jour,timestamp troupeau-15 min,heure; jour fixe; erreurs HAC 24 h,0.0909,-0.4735,0.6553,0.7522295629011291,5795,Analyse de sensibilité cohérente : effet intra-jour non concluant.
+Vache-jour : Steps ~ THI + vache,vache-jour,vache fixe; erreurs regroupées par jour,0.2426,0.1522,0.333,1.4317269687536447e-07,941,Association entre jours; ne démontre pas un effet thermique intra-jour.
