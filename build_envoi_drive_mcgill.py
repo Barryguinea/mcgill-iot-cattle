@@ -143,7 +143,58 @@ def verifier(dossier: Path) -> list[str]:
     return alertes
 
 
+def construire_documents_seuls() -> Path:
+    """Variante légère : uniquement les rapports Word et les présentations.
+
+    Utile pour un envoi par courriel, quand les jeux de données complets ne sont
+    pas demandés. Les contrôles de propreté restent les mêmes.
+    """
+    destination = BUREAU / f"A_ENVOYER_McGill_documents_{date.today().isoformat()}"
+    if destination.exists():
+        shutil.rmtree(destination)
+
+    documents = [
+        (PAQUETS[0], "Objectif1_rapport_livraison.docx"),
+        (PAQUETS[0], "Objectif1_Presentation_McGill_WELL-E.pptx"),
+        (PAQUETS[0], "Objectif1_presentation_detaillee.pptx"),
+        (PAQUETS[0], "Annexe_pipeline_actuelle_HYPO_instabilite_hybride.docx"),
+        (PAQUETS[1], "Objectif2_rapport_livraison.docx"),
+        (PAQUETS[1], "Objectif2_presentation_detaillee.pptx"),
+    ]
+    for paquet, nom in documents:
+        dossier = destination / paquet.split("_")[0]
+        dossier.mkdir(parents=True, exist_ok=True)
+        origine = next(
+            (c for c in (SOURCE / paquet).rglob(nom)),
+            SOURCE / "Reunion_McGill_2026-07-30" / nom,
+        )
+        cible = dossier / nom
+        shutil.copy2(origine, cible)
+        if cible.suffix == ".pptx":
+            nettoyer_presentation(cible)
+        print(f"  {paquet.split('_')[0]:10} {nom}")
+
+    alertes = verifier(destination)
+    print()
+    if alertes:
+        print(f"  {len(alertes)} ALERTE(S) :")
+        for alerte in alertes:
+            print(f"    {alerte}")
+    else:
+        print("  Controle : aucune trace d'outil, aucune note, aucune facture.")
+    poids = sum(f.stat().st_size for f in destination.rglob("*") if f.is_file())
+    print(f"  {len(documents)} documents, {poids / 1e6:.1f} Mo")
+    print(f"  Pret : {destination}")
+    return destination
+
+
 def main() -> None:
+    import sys
+
+    if "--documents-seuls" in sys.argv:
+        construire_documents_seuls()
+        return
+
     if DESTINATION.exists():
         shutil.rmtree(DESTINATION)
     DESTINATION.mkdir(parents=True)
