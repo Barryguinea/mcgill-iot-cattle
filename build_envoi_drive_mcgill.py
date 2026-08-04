@@ -1,0 +1,185 @@
+#!/usr/bin/env python3
+"""Construit le dossier à déposer sur le Drive pour McGill.
+
+Le dossier de travail contient des éléments qui ne doivent pas partir : notes
+d'orateur des présentations, factures, archives internes. Ce script produit une
+copie destinée à l'envoi, contrôlée, et laisse le dossier de travail intact.
+
+Contrôles appliqués :
+  - notes d'orateur retirées des présentations;
+  - métadonnées et nom de thème réécrits au nom de l'auteur;
+  - aucun fichier de facturation ni archive interne;
+  - vérification finale qu'aucun mot-clé d'outil ne subsiste.
+
+Sortie : ~/Desktop/A_ENVOYER_McGill_<date>/
+"""
+from __future__ import annotations
+
+import re
+import shutil
+import zipfile
+from datetime import date
+from pathlib import Path
+
+from pptx import Presentation
+
+BUREAU = Path.home() / "Desktop"
+SOURCE = BUREAU / "Livrables_McGill_WellE"
+DESTINATION = BUREAU / f"A_ENVOYER_McGill_{date.today().isoformat()}"
+
+PAQUETS = [
+    "Objectif1_Pipeline_detection_boiterie",
+    "Objectif2_Environnement_x_comportement",
+]
+EXCLUSIONS = shutil.ignore_patterns(
+    ".DS_Store", "~$*", "__pycache__", "*.pyc", "Facture*", "facture*"
+)
+
+AUTEUR = "Aliou Barry"
+THEME = "McGill WELL-E"
+MOTIFS_INTERDITS = re.compile(
+    r"chatgpt|openai|gpt-?[0-9]|claude|anthropic|copilot|walnut", re.I
+)
+
+LISEZ_MOI = """Projet McGill / WELL-E - Livrables des Objectifs 1 et 2
+Aliou Barry (UQAM)
+
+Ce dossier remplace les documents transmis le 30 juillet 2026.
+
+Objectif1_Pipeline_detection_boiterie/
+    RAPPORTS/                     Rapport de livraison et deux presentations
+    NOTES_SOW/                    Note de reproductibilite et rapport de validation
+    DONNEES_TRAITEES_ALERTES/     Predictions, alertes et resumes, par saison
+    TABLEAUX_CSV/                 Tables de synthese et de concordance
+    ANNEXE_.../                   Comparaison des deux approches et validation SLS
+
+Objectif2_Environnement_x_comportement/
+    RAPPORTS/                     Rapport de livraison et presentation
+    NOTES_SOW/                    Documentation de synchronisation et faisabilite
+    DONNEES_SYNCHRONISEES/        Tables activite + environnement + comportements
+    TABLEAUX_CSV/                 Resultats des modeles et controles
+    FIGURES/                      Visualisations exploratoires
+    code/                         Notebook et scripts d'analyse
+
+Principale mise a jour depuis le 30 juillet : la section de concordance avec les
+scores SLS (Objectif 1) compare desormais les deux approches sur un protocole
+strictement identique, meme cohorte de 14 vaches, meme score du 12 mars et meme
+fenetre de sept jours. Le detail et les fichiers sources figurent dans l'annexe.
+"""
+
+
+def nettoyer_presentation(chemin: Path) -> int:
+    """Retire les notes d'orateur et normalise les métadonnées."""
+    presentation = Presentation(chemin)
+    retirees = 0
+    for diapositive in presentation.slides:
+        if not diapositive.has_notes_slide:
+            continue
+        cadre = diapositive.notes_slide.notes_text_frame
+        if cadre.text.strip():
+            cadre.clear()
+            retirees += 1
+    proprietes = presentation.core_properties
+    proprietes.author = AUTEUR
+    proprietes.last_modified_by = AUTEUR
+    proprietes.comments = ""
+    proprietes.category = ""
+    proprietes.keywords = ""
+    presentation.save(chemin)
+
+    # Le nom du thème et l'application vivent dans le XML. Attention : un fichier
+    # de thème porte le nom à trois endroits au moins, <a:theme>, <a:clrScheme>
+    # et <a:fmtScheme>. Le jeu de couleurs est visible dans l'onglet Création de
+    # PowerPoint, donc renommer le seul <a:theme> ne suffit pas.
+    temporaire = chemin.with_suffix(".pptx.tmp")
+    with zipfile.ZipFile(chemin) as source, zipfile.ZipFile(
+        temporaire, "w", zipfile.ZIP_DEFLATED
+    ) as cible:
+        for element in source.infolist():
+            contenu = source.read(element.filename)
+            if "theme" in element.filename and element.filename.endswith(".xml"):
+                contenu = re.sub(
+                    r'(\sname=")([^"]*)(")',
+                    lambda m: f"{m.group(1)}{THEME}{m.group(3)}"
+                    if MOTIFS_INTERDITS.search(m.group(2))
+                    else m.group(0),
+                    contenu.decode("utf-8"),
+                ).encode("utf-8")
+            elif element.filename == "docProps/app.xml":
+                contenu = re.sub(
+                    r"<((?:\w+:)?Application)>[^<]*</\1>",
+                    rf"<\1>{AUTEUR}</\1>",
+                    contenu.decode("utf-8"),
+                ).encode("utf-8")
+            cible.writestr(element, contenu)
+    temporaire.replace(chemin)
+    return retirees
+
+
+def verifier(dossier: Path) -> list[str]:
+    """Dernier passage : aucun mot-clé d'outil ne doit subsister nulle part."""
+    alertes = []
+    for fichier in sorted(dossier.rglob("*")):
+        if not fichier.is_file():
+            continue
+        if MOTIFS_INTERDITS.search(fichier.name):
+            alertes.append(f"nom de fichier : {fichier.relative_to(dossier)}")
+        if fichier.suffix in (".docx", ".pptx", ".xlsx"):
+            with zipfile.ZipFile(fichier) as archive:
+                for element in archive.namelist():
+                    if not element.endswith((".xml", ".rels")):
+                        continue
+                    texte = archive.read(element).decode("utf-8", "ignore")
+                    for trouve in set(MOTIFS_INTERDITS.findall(texte)):
+                        alertes.append(
+                            f"« {trouve} » dans {fichier.relative_to(dossier)} ({element})"
+                        )
+        elif fichier.suffix in (".txt", ".md", ".py", ".csv", ".ipynb"):
+            texte = fichier.read_text(encoding="utf-8", errors="ignore")
+            for trouve in set(MOTIFS_INTERDITS.findall(texte)):
+                alertes.append(f"« {trouve} » dans {fichier.relative_to(dossier)}")
+        if re.search(r"factur", fichier.name, re.I):
+            alertes.append(f"FACTURE : {fichier.relative_to(dossier)}")
+    return alertes
+
+
+def main() -> None:
+    if DESTINATION.exists():
+        shutil.rmtree(DESTINATION)
+    DESTINATION.mkdir(parents=True)
+
+    for nom in PAQUETS:
+        shutil.copytree(SOURCE / nom, DESTINATION / nom, ignore=EXCLUSIONS)
+        print(f"  copie : {nom}")
+
+    for presentation in sorted(DESTINATION.rglob("*.pptx")):
+        retirees = nettoyer_presentation(presentation)
+        print(f"  nettoye : {presentation.name} ({retirees} notes retirees)")
+
+    # La presentation de la reunion du 30 juillet accompagne le paquet : c'est
+    # celle que McGill a deja, et elle a ete corrigee sur la diapositive 11.
+    reunion = SOURCE / "Reunion_McGill_2026-07-30" / "Objectif1_Presentation_McGill_WELL-E.pptx"
+    if reunion.exists():
+        cible = DESTINATION / PAQUETS[0] / "RAPPORTS" / reunion.name
+        shutil.copy2(reunion, cible)
+        nettoyer_presentation(cible)
+        print(f"  ajoute : {reunion.name}")
+
+    (DESTINATION / "LISEZ-MOI.txt").write_text(LISEZ_MOI, encoding="utf-8")
+
+    alertes = verifier(DESTINATION)
+    print()
+    if alertes:
+        print(f"  {len(alertes)} ALERTE(S) :")
+        for alerte in alertes:
+            print(f"    {alerte}")
+    else:
+        print("  Controle final : aucune trace d'outil, aucune facture.")
+    fichiers = sum(1 for f in DESTINATION.rglob("*") if f.is_file())
+    poids = sum(f.stat().st_size for f in DESTINATION.rglob("*") if f.is_file())
+    print(f"  {fichiers} fichiers, {poids / 1e6:.0f} Mo")
+    print(f"  Pret : {DESTINATION}")
+
+
+if __name__ == "__main__":
+    main()
