@@ -1,4 +1,4 @@
-OBJECTIF 3 — NOTEBOOK DE DÉMONSTRATION IoT
+OBJECTIF 3 - NOTEBOOK DE DÉMONSTRATION IoT
 
 Statut : notebook exécuté intégralement et sans erreur.
 Données : échantillon IceTag de l'été 2019, résultats multi-saisons et données THI-comportement.

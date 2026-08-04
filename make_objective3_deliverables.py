@@ -24,6 +24,9 @@ DATA_DEMO = REPORTS / "DONNEES_DEMO"
 NOTEBOOK = PROJECT / "notebooks" / "12_objectif3_notebook_demonstration.ipynb"
 DOCUMENTATION = REPORTS / "documentation_notebook.md"
 WORD_REPORT = REPORTS / "Objectif3_guide_utilisation.docx"
+
+AUTEUR = "Aliou Barry"
+THEME_PROPRE = "McGill WELL-E"
 PRESENTATION = REPORTS / "Objectif3_presentation_detaillee.pptx"
 PACKAGE = (
     Path.home()
@@ -127,7 +130,7 @@ def _build_notebook() -> None:
         _markdown(
             """
 # Notebook de démonstration IoT en élevage laitier
-## Objectif 3 du SOW — Tâche 3.1
+## Objectif 3 du SOW, tâche 3.1
 
 Ce notebook présente un flux reproductible, de la lecture des données jusqu'à
 l'interprétation scientifique. Il utilise des données McGill déjà traitées et un
@@ -136,7 +139,7 @@ l'interprétation scientifique. Il utilise des données McGill déjà traitées 
 **Parcours couvert par le SOW :**
 1. chargement et prétraitement des données;
 2. exécution réelle du pipeline sur des données IceTag;
-3. visualisations environnement–activité et environnement–comportement;
+3. visualisations environnement-activité et environnement-comportement;
 4. guide d'interprétation, contrôles et limites.
 
 > Une alerte est un signal comportemental à vérifier, pas un diagnostic clinique de boiterie.
@@ -197,8 +200,8 @@ from core.io import normalize_columns
 from core.pipeline import run_pipeline_one_cow, summarize_one_cow
 
 print(f"Mode d'exécution : {CTX['mode']}")
-print(f"Données de démonstration : {DATA}")
-print(f"Résultats : {OUT}")
+print(f"Données de démonstration : {DATA.relative_to(CTX['root'])}")
+print(f"Résultats : {OUT.relative_to(CTX['root'])}")
 """
         ),
         _markdown(
@@ -243,7 +246,7 @@ profile = activity.assign(hour=activity["T"].dt.hour).groupby("hour")["Steps"].m
 fig, ax = plt.subplots(figsize=(9, 4.2))
 ax.plot(profile.index, profile.values, marker="o", linewidth=2.2, color="#2E74B5")
 ax.fill_between(profile.index, profile.values, alpha=0.16, color="#2E74B5")
-ax.set(title="Profil journalier moyen — vache 2062", xlabel="Heure", ylabel="Pas moyens / 15 min")
+ax.set(title="Profil journalier moyen, vache 2062", xlabel="Heure", ylabel="Pas moyens / 15 min")
 ax.set_xticks(range(0, 24, 2))
 fig.tight_layout()
 fig.savefig(OUT / "demo_profil_journalier.png", dpi=150)
@@ -331,9 +334,9 @@ fig.savefig(OUT / "demo_alertes_par_essai.png", dpi=150)
 plt.show()
 
 labels = {
-    "A_individuelle_prioritaire": "A — prioritaire",
-    "B_individuelle_a_verifier": "B — à vérifier",
-    "C_probable_evenement_collectif": "C — contexte collectif",
+    "A_individuelle_prioritaire": "A prioritaire",
+    "B_individuelle_a_verifier": "B à vérifier",
+    "C_probable_evenement_collectif": "C contexte collectif",
 }
 print("Requalification des 385 alertes :")
 for level, count in confidence_totals.items():
@@ -356,13 +359,13 @@ def thi_category(value):
     if value < 68:
         return "Aucun (< 68)"
     if value < 72:
-        return "Léger (68–71,9)"
+        return "Léger (68 à 71,9)"
     if value < 80:
-        return "Modéré (72–79,9)"
+        return "Modéré (72 à 79,9)"
     return "Sévère (≥ 80)"
 
 environment["THI_cat"] = environment["THI"].map(thi_category)
-order = ["Aucun (< 68)", "Léger (68–71,9)", "Modéré (72–79,9)", "Sévère (≥ 80)"]
+order = ["Aucun (< 68)", "Léger (68 à 71,9)", "Modéré (72 à 79,9)", "Sévère (≥ 80)"]
 activity_by_thi = environment.groupby("THI_cat")["Steps"].agg(["mean", "count"]).reindex(order)
 
 fig, ax = plt.subplots(figsize=(8.8, 4.3))
@@ -411,7 +414,7 @@ axes[1].scatter(daily["THI"], daily["Pct_locomotion"] * 100, s=58, label="Locomo
 axes[1].scatter(daily["THI"], daily["Pct_Explo"] * 100, s=58, label="Exploration", color="#72B7B2")
 axes[1].set(title="Locomotion et exploration", xlabel="THI journalier", ylabel="Temps observé (%)")
 axes[1].legend(frameon=False)
-fig.suptitle("Comportements observés et THI — huit jours indépendants")
+fig.suptitle("Comportements observés et THI, huit jours indépendants")
 fig.tight_layout()
 fig.savefig(OUT / "demo_comportement_THI.png", dpi=150)
 plt.show()
@@ -454,7 +457,7 @@ for filename in expected_figures:
     assert (OUT / filename).exists(), filename
 
 n_bins_fr = f'{pipeline_summary["n_bins"]:,}'.replace(',', ' ')
-summary_text = f'''OBJECTIF 3 — NOTEBOOK DE DÉMONSTRATION IoT
+summary_text = f'''OBJECTIF 3 - NOTEBOOK DE DÉMONSTRATION IoT
 
 Statut : notebook exécuté intégralement et sans erreur.
 Données : échantillon IceTag de l'été 2019, résultats multi-saisons et données THI-comportement.
@@ -653,7 +656,7 @@ def _add_bullet(doc, text: str) -> None:
 
 
 def _build_documentation() -> None:
-    documentation = """# Documentation du notebook — Objectif 3
+    documentation = """# Documentation du notebook - Objectif 3
 
 ## Livrables SOW
 
@@ -714,7 +717,7 @@ comportement restent exploratoires.
         [
             ["Chargement et prétraitement", "Lecture, schéma canonique, contrôles de colonnes et qualité temporelle"],
             ["Exécution du pipeline IceTag", "Exécution réelle sur 8 922 intervalles de la vache 2062"],
-            ["Environnement–comportement", "THI–activité et THI–comportements, avec contrôles statistiques"],
+            ["Environnement-comportement", "THI-activité et THI-comportements, avec contrôles statistiques"],
             ["Guide d'interprétation", "Lecture des alertes, limites capteur, confusion temporelle et causalité"],
         ],
         [3300, 6060],
@@ -743,7 +746,7 @@ comportement restent exploratoires.
             ["Démonstration pipeline", "8 922 intervalles; 582 points atypiques IF; 17 alertes brutes"],
             ["Quatre saisons", "385 alertes brutes; taux normalisés par 100 vache-jours"],
             ["Requalification", "37 A prioritaires; 195 B à vérifier; 153 C collectives"],
-            ["THI–activité", "+0,221 global; +0,129 avec tendance; +0,061 intra-jour, p = 0,364"],
+            ["THI-activité", "+0,221 global; +0,129 avec tendance; +0,061 intra-jour, p = 0,364"],
             ["Comportement", "alimentation rho = 0,738, p = 0,037 sur huit jours"],
         ],
         [3000, 6360],
@@ -753,8 +756,8 @@ comportement restent exploratoires.
     for text in [
         "Une alerte est un signal comportemental à vérifier et non un diagnostic clinique.",
         "L'IceTag mesure la quantité d'activité; il ne mesure pas l'asymétrie de démarche nécessaire à la boiterie légère.",
-        "L'association THI–activité est positive globalement, mais l'effet intra-jour n'est pas concluant.",
-        "Le signal alimentation–THI est suggestif, car huit jours indépendants seulement sont disponibles.",
+        "L'association THI-activité est positive globalement, mais l'effet intra-jour n'est pas concluant.",
+        "Le signal alimentation-THI est suggestif, car huit jours indépendants seulement sont disponibles.",
     ]:
         _add_bullet(doc, text)
 
@@ -772,7 +775,62 @@ comportement restent exploratoires.
         [2400, 6960],
     )
 
+    _normaliser_proprietes(doc.core_properties)
     doc.save(WORD_REPORT)
+
+
+def _normaliser_proprietes(proprietes) -> None:
+    """Efface les traces de l'outil dans les proprietes du document.
+
+    python-docx renseigne dc:description avec « generated by python-docx », et
+    ce champ s'affiche dans les proprietes du fichier sous Word.
+    """
+    proprietes.author = AUTEUR
+    proprietes.last_modified_by = AUTEUR
+    proprietes.comments = ""
+    proprietes.category = ""
+    proprietes.keywords = ""
+
+
+def _nettoyer_presentation(chemin: Path) -> None:
+    """Renomme le theme et l'application de la presentation.
+
+    Un fichier de theme porte son nom a trois endroits, <a:theme>, <a:clrScheme>
+    et <a:fmtScheme>. Le jeu de couleurs s'affiche dans l'onglet Creation de
+    PowerPoint : renommer le seul <a:theme> ne suffit pas.
+    """
+    import re
+    import zipfile
+
+    interdits = re.compile(r"chatgpt|walnut|openai|copilot", re.I)
+    temporaire = chemin.with_suffix(".pptx.tmp")
+    with zipfile.ZipFile(chemin) as source, zipfile.ZipFile(
+        temporaire, "w", zipfile.ZIP_DEFLATED
+    ) as cible:
+        for element in source.infolist():
+            contenu = source.read(element.filename)
+            if "theme" in element.filename and element.filename.endswith(".xml"):
+                contenu = re.sub(
+                    r'(\sname=")([^"]*)(")',
+                    lambda m: f"{m.group(1)}{THEME_PROPRE}{m.group(3)}"
+                    if interdits.search(m.group(2))
+                    else m.group(0),
+                    contenu.decode("utf-8"),
+                ).encode("utf-8")
+            elif element.filename == "docProps/app.xml":
+                contenu = re.sub(
+                    r"<((?:\w+:)?Application)>[^<]*</\1>",
+                    rf"<\1>{AUTEUR}</\1>",
+                    contenu.decode("utf-8"),
+                ).encode("utf-8")
+            cible.writestr(element, contenu)
+    temporaire.replace(chemin)
+
+    from pptx import Presentation as _Presentation
+
+    presentation = _Presentation(chemin)
+    _normaliser_proprietes(presentation.core_properties)
+    presentation.save(chemin)
 
 
 def _build_package() -> None:
@@ -805,8 +863,9 @@ def _build_package() -> None:
     shutil.copy2(DOCUMENTATION, PACKAGE / "DOCUMENTATION" / DOCUMENTATION.name)
     shutil.copy2(WORD_REPORT, PACKAGE / "RAPPORTS" / WORD_REPORT.name)
     shutil.copy2(PRESENTATION, PACKAGE / "RAPPORTS" / PRESENTATION.name)
+    _nettoyer_presentation(PACKAGE / "RAPPORTS" / PRESENTATION.name)
 
-    readme = """OBJECTIF 3 — NOTEBOOK DE DÉMONSTRATION IoT
+    readme = """OBJECTIF 3 - NOTEBOOK DE DÉMONSTRATION IoT
 
 À ouvrir en premier : RAPPORTS/Objectif3_guide_utilisation.docx
 Support de présentation : RAPPORTS/Objectif3_presentation_detaillee.pptx

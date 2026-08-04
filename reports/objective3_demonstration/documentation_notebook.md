@@ -1,4 +1,4 @@
-# Documentation du notebook — Objectif 3
+# Documentation du notebook - Objectif 3
 
 ## Livrables SOW
 
