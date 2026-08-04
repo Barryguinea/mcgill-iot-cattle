@@ -1,5 +1,5 @@
-Experiment,n_scans,scans_avec_alerte,taux_concurrence_%
-Fall 2021,270,1,0.4
-Fall2019,27,12,44.4
-Summer2019,58,14,24.1
-Winter2019,41,11,26.8
+Experiment,scans_dates,scans_couverts_icetag_pm1j,scans_avec_alerte_pm1j,taux_concordance_pm1j_pct
+Winter 2019,41,41,11,26.8
+Summer 2019,58,55,14,25.5
+Fall 2019,27,27,12,44.4
+Fall 2021,270,10,1,10.0

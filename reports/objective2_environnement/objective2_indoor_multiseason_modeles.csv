@@ -1,0 +1,10 @@
+corpus,modele,coefficient_temp,ic95_bas,ic95_haut,p,n,interpretation
+Summer 2019,"Global, ajusté pour l'heure",0.4193,0.28,0.5586,3.6400742630454637e-09,6987,"Association globale, melangeant variations entre jours et intra-jour."
+Summer 2019,Intra-jour strict (jour fixe),0.0431,-0.1463,0.2325,0.6554413177479972,6987,"Effet a l'interieur des journees, apres controle du jour."
+Summer 2019,Entre journées (unité jour),0.5273,0.3602,0.6944,6.196055041295792e-10,74,Comparaison des moyennes journalieres entre elles.
+Fall 2019,"Global, ajusté pour l'heure",-0.0002,-0.2257,0.2252,0.9982904986227883,3038,"Association globale, melangeant variations entre jours et intra-jour."
+Fall 2019,Intra-jour strict (jour fixe),-0.182,-0.4427,0.0786,0.17111689007963082,3038,"Effet a l'interieur des journees, apres controle du jour."
+Fall 2019,Entre journées (unité jour),0.1071,-0.3142,0.5283,0.6184185326278024,33,Comparaison des moyennes journalieres entre elles.
+Fall 2021,"Global, ajusté pour l'heure",0.595,-0.0214,1.2114,0.05849455791508366,585,"Association globale, melangeant variations entre jours et intra-jour."
+Fall 2021,Intra-jour strict (jour fixe),0.311,-0.5028,1.1248,0.4538172429981603,585,"Effet a l'interieur des journees, apres controle du jour."
+Fall 2021,Entre journées (unité jour),0.8242,0.2779,1.3704,0.0031056675039315466,7,Comparaison des moyennes journalieres entre elles.

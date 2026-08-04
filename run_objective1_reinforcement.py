@@ -285,24 +285,6 @@ def _summarize_by_season(alerts: pd.DataFrame, predictions: pd.DataFrame) -> pd.
         summary["herd_specific_signal"] / summary["initial_notifications"]
     )
 
-    v3_path = REPORTS / "memoirev3_comparison" / "comparison_summary_by_season.csv"
-    if v3_path.exists():
-        v3 = pd.read_csv(v3_path)
-        v3_cols = [
-            col
-            for col in [
-                "season",
-                "old_lameness_notifs",
-                "v3_behavioral_hypo_notifs",
-                "v3_instability_notifs",
-                "v3_hybrid_notifs",
-                "old_rate_per_100_cow_days",
-                "v3_hybrid_rate_per_100_cow_days",
-            ]
-            if col in v3.columns
-        ]
-        summary = summary.merge(v3[v3_cols], on="season", how="left")
-
     return summary.sort_values("season")
 
 
@@ -377,7 +359,6 @@ def _write_report(
         "## Perimetre",
         "",
         "- Base conservee: pipeline initiale McGill deja livree (Isolation Forest + regles metier).",
-        "- Aucune modification de `memoirev3`.",
         "- Objectif: requalifier les 385 notifications existantes avec un contexte troupeau, un filtre d'evenements collectifs et des niveaux de confiance.",
         "- Interpretation: alertes comportementales compatibles avec une perturbation locomotrice, pas diagnostics cliniques confirmes.",
         "",
@@ -407,8 +388,6 @@ def _write_report(
         "## Lecture scientifique",
         "",
         "Cette analyse renforce l'Objectif 1 parce qu'elle separe les alertes individuelles prioritaires des alertes probablement liees a un contexte partage. Elle ne transforme pas les alertes en verite-terrain clinique: la sensibilite et la specificite a la boiterie restent non mesurables sans labels synchrones et cas cliniquement nets.",
-        "",
-        "La comparaison V3 reste une annexe methodologique: `../memoirev3_comparison/CADRAGE_pipeline_initiale_vs_V3.md`. Elle documente que la V3 produit plus d'alertes comportementales, mais ne prouve pas une meilleure detection clinique de boiterie sur McGill.",
         "",
         "## Fichiers produits",
         "",

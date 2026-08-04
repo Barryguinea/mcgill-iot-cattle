@@ -477,7 +477,94 @@ def _build_report(destination: Path) -> None:
         "le même THI journalier.",
     )
 
-    doc.add_heading("5. Faisabilité d'un modèle intégré", level=1)
+    doc.add_heading("5. Robustesse sur d'autres corpus", level=1)
+    _add_label_paragraph(
+        doc,
+        "Question posée.",
+        "L'analyse principale porte sur un seul corpus. Pour vérifier que la "
+        "conclusion ne dépend pas de cette saison, la même méthode a été appliquée "
+        "à deux corpus supplémentaires.",
+    )
+    _add_label_paragraph(
+        doc,
+        "Mesure retenue.",
+        "Seul Summer 2019 dispose de sondes extérieures. La comparaison utilise donc "
+        "la température intérieure, seule mesure commune aux trois corpus. Winter 2019 "
+        "est écarté : il ne comporte aucune donnée environnementale.",
+    )
+    _add_table(
+        doc,
+        ["Corpus", "Vaches", "Jours", "Entre journées", "Intra-jour strict"],
+        [
+            ["Summer 2019", "17", "74", "+0,527 (p < 0,001)", "+0,043 (p = 0,655)"],
+            ["Fall 2019", "30", "33", "+0,107 (p = 0,618)", "-0,182 (p = 0,171)"],
+            ["Fall 2021", "10", "7", "+0,824 (p = 0,003)", "+0,311 (p = 0,454)"],
+        ],
+        [1600, 800, 800, 3080, 3080],
+    )
+    _add_callout(
+        doc,
+        "Résultat.",
+        "L'effet intra-jour est non concluant dans les trois corpus. Summer 2019 et "
+        "Fall 2021 montrent pourtant une association forte entre les journées, qui "
+        "disparaît après contrôle du jour. Le contrôle du jour écarte donc un "
+        "artefact de façon reproductible, sur des saisons, des années et des plages "
+        "thermiques différentes.",
+    )
+    _add_label_paragraph(
+        doc,
+        "Placement des sondes.",
+        "Pour Summer 2019, la position est documentée : les relevés sont rangés dans "
+        "des répertoires « Inside » et « Outside », et l'analyse principale utilise les "
+        "sondes extérieures. Pour Fall 2019 et Fall 2021, aucune documentation de "
+        "position n'accompagne les fichiers, nommés d'après les groupes expérimentaux. "
+        "Leur placement à l'intérieur du bâtiment est déduit des relevés eux-mêmes. "
+        "Les sondes de Fall 2019 mesurent 3,8 à 17,8 degrés Celsius du 11 novembre au "
+        "13 décembre 2019; celles de Fall 2021, 6,5 à 16,4 degrés du 9 novembre au "
+        "8 décembre 2021 sur les fichiers exprimés en Celsius. Ces valeurs sont "
+        "incompatibles avec des conditions extérieures québécoises à cette période et "
+        "aucun relevé ne descend sous zéro. Cette déduction est solide mais reste à "
+        "confirmer par McGill.",
+    )
+    _add_label_paragraph(
+        doc,
+        "Contrôles de qualité des données.",
+        "Fall 2019 ne présente aucun doublon sur 34 847 relevés, avec une couverture "
+        "continue du 11 novembre au 13 décembre. Fall 2021 contient en revanche 12 % "
+        "de doublons exacts, dus à des répertoires qui se recouvrent, ainsi que des "
+        "fichiers exprimés en degrés Fahrenheit pour des périodes situées hors de la "
+        "fenêtre d'analyse : début novembre et mi-décembre 2021, puis février 2022. "
+        "Ces deux points sont signalés à McGill comme éléments de qualité des données.",
+    )
+    _add_label_paragraph(
+        doc,
+        "Sensibilité à la préparation des données.",
+        "Pour vérifier que ces défauts n'influencent pas la conclusion, l'analyse de "
+        "Fall 2021 a été refaite selon trois préparations : tous les fichiers, les "
+        "mêmes après suppression des doublons, puis le seul répertoire couvrant la "
+        "fenêtre. Les trois donnent le même résultat, l'effet intra-jour restant non "
+        "concluant (p compris entre 0,448 et 0,454) et la plage de température restant "
+        "de 7,3 à 14,2 degrés Celsius. Les doublons étant exacts, ils ne modifient pas "
+        "une moyenne, et les fichiers en Fahrenheit ne recouvrent pas la fenêtre "
+        "analysée.",
+    )
+    _add_label_paragraph(
+        doc,
+        "Limites.",
+        "Fall 2021 ne couvre que sept jours, ce qui réduit fortement la puissance du "
+        "contrôle du jour. Cette analyse porte sur l'environnement du bâtiment et non "
+        "sur les conditions météorologiques : elle complète l'analyse THI extérieure "
+        "sans la remplacer.",
+    )
+    _add_label_paragraph(
+        doc,
+        "Reproduction.",
+        "Script run_objective2_indoor_multiseason.py; sorties dans "
+        "TABLEAUX_CSV/objective2_indoor_multiseason_descriptifs.csv et "
+        "objective2_indoor_multiseason_modeles.csv.",
+    )
+
+    doc.add_heading("6. Faisabilité d'un modèle intégré", level=1)
     _add_label_paragraph(
         doc,
         "Faisable maintenant.",
@@ -494,11 +581,15 @@ def _build_report(destination: Path) -> None:
         doc,
         "Renforcement futur.",
         "Ajouter davantage de jours de scan, tester des effets décalés et étendre "
-        "l'analyse au froid hivernal après validation de la correspondance entre "
-        "les éthogrammes Summer et Winter par McGill.",
+        "l'analyse aux basses températures. Le corpus exploitable pour cette extension "
+        "est Fall 2019, qui dispose de sondes HOBO du 11 novembre au 13 décembre; "
+        "Winter 2019 ne comporte aucune mesure environnementale. Cette "
+        "extension suppose un indicateur adapté au froid, l'indice THI mesurant un "
+        "stress thermique estival, et la validation par McGill de la correspondance "
+        "entre les éthogrammes des deux saisons.",
     )
 
-    doc.add_heading("6. Conclusion et limites", level=1)
+    doc.add_heading("7. Conclusion et limites", level=1)
     _add_label_paragraph(
         doc,
         "Conclusion.",
@@ -521,6 +612,17 @@ def _build_report(destination: Path) -> None:
         "La progression saisonnière, l'accès à l'exercice, le jour d'observation et "
         "d'autres variables individuelles peuvent expliquer une partie du signal.",
     )
+
+    # Proprietes du document : sans cela, python-docx laisse ses valeurs par
+    # defaut, dont un auteur « python-docx » visible dans Word.
+    props = doc.core_properties
+    props.title = "Objectif 2 - Conditions environnementales et comportement locomoteur"
+    props.subject = "Projet McGill / WELL-E"
+    props.author = "Aliou Barry"
+    props.last_modified_by = "Aliou Barry"
+    props.comments = ""
+    props.category = ""
+    props.keywords = ""
 
     destination.parent.mkdir(parents=True, exist_ok=True)
     doc.save(destination)
@@ -573,6 +675,19 @@ objective2_trimodal_summary.csv
 summer2019_comportement_vs_THI.csv
   Relations exploratoires entre comportements journaliers et THI. Le signal
   positif de l'alimentation repose sur seulement 8 jours et doit être confirmé.
+
+objective2_indoor_multiseason_descriptifs.csv
+  Couverture des trois corpus de l'extension intérieure (Summer 2019, Fall 2019,
+  Fall 2021) : intervalles appariés, vaches, jours et plage de température.
+
+objective2_indoor_multiseason_modeles.csv
+  CONTRÔLE DE ROBUSTESSE. La même méthode est appliquée aux trois corpus, sur la
+  température INTÉRIEURE, seule mesure commune aux trois. L'effet intra-jour est
+  non concluant dans les trois cas, alors que l'association entre journées est
+  forte pour Summer 2019 et Fall 2021 : le contrôle du jour écarte donc un
+  artefact de façon reproductible.
+  Winter 2019 est absent, faute de toute donnée environnementale. Cette extension
+  complète l'analyse THI extérieure, elle ne la remplace pas.
 """,
         encoding="utf-8",
     )
@@ -662,7 +777,10 @@ La progression saisonnière, le protocole d'exercice ou d'autres caractéristiqu
 2. Présenter séparément les associations entre jours et les variations intra-jour.
 3. Densifier les scans comportementaux avant de les utiliser comme covariables.
 4. Tester les effets décalés lorsque davantage de jours indépendants seront disponibles.
-5. Étendre au froid hivernal après validation McGill de la correspondance des éthogrammes.
+5. Étendre aux basses températures sur Fall 2019, seul corpus froid disposant de sondes HOBO
+   (du 11 novembre au 13 décembre); Winter 2019 n'a aucune mesure environnementale. Prévoir un
+   indicateur adapté au froid, le THI mesurant un stress estival, et faire valider par McGill la
+   correspondance des éthogrammes entre saisons.
 """,
         encoding="utf-8",
     )
@@ -673,12 +791,14 @@ Contenu à livrer :
 - RAPPORTS/Objectif2_rapport_livraison.docx
 - RAPPORTS/Objectif2_presentation_detaillee.pptx
 - DONNEES_SYNCHRONISEES/ : trois tables synchronisées et le relevé des deux scans incomplets
-- TABLEAUX_CSV/ : descriptifs, modèles de sensibilité, contrôle complet du THI, non-linéarité et concordance trimodale
+- TABLEAUX_CSV/ : descriptifs, modèles de sensibilité, contrôle complet du THI, non-linéarité, concordance trimodale et extension à trois corpus
 - FIGURES/ : deux visualisations exploratoires
 - NOTES_SOW/ : procédure de synchronisation et faisabilité de la modélisation
 - code/ : notebook de synchronisation actuel et scripts finaux
 
 Résultat principal : l'association globale THI-activité est positive et reproductible, principalement entre les jours. L'effet strictement intra-jour est positif mais non concluant. Les deux estimations répondent à des questions différentes et aucune causalité n'est revendiquée.
+
+Extension (section 5 du rapport) : le même comportement se reproduit sur Fall 2019 et Fall 2021 avec la température intérieure. L'effet intra-jour est non concluant dans les trois corpus. Le placement des sondes, les contrôles de qualité des données et le test de sensibilité à la préparation sont documentés dans cette section.
 """,
         encoding="utf-8",
     )
@@ -690,9 +810,37 @@ def _copy(source: Path, destination: Path) -> None:
     shutil.copy2(source, destination)
 
 
+def _rescue_foreign_files() -> list[Path]:
+    """Met de côté les fichiers ajoutés à la main avant la reconstruction.
+
+    Le paquet est reconstruit à neuf par un `rmtree`. Tout fichier déposé
+    manuellement dans le dossier de livraison (une facture signée, une note)
+    serait perdu sans ce sauvetage. Les fichiers récupérés sont replacés
+    après la reconstruction.
+    """
+    if not PACKAGE.exists():
+        return []
+    produits = {
+        "README_livraison_objectif2.txt",
+        ".DS_Store",
+    }
+    abri = PACKAGE.parent / f".{PACKAGE.name}_fichiers_manuels"
+    if abri.exists():
+        shutil.rmtree(abri)
+    sauves = []
+    for chemin in PACKAGE.iterdir():
+        if chemin.is_dir() or chemin.name in produits:
+            continue
+        abri.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(chemin, abri / chemin.name)
+        sauves.append(abri / chemin.name)
+    return sauves
+
+
 def build_package() -> None:
     if PACKAGE.name != "Objectif2_Environnement_x_comportement":
         raise RuntimeError("Chemin de livraison inattendu")
+    sauves = _rescue_foreign_files()
     if PACKAGE.exists():
         shutil.rmtree(PACKAGE)
     for folder in [
@@ -736,10 +884,12 @@ def build_package() -> None:
         "objective2_trimodal_summary.csv",
     ]:
         _copy(MODELS / name, PACKAGE / "TABLEAUX_CSV" / name)
-    _copy(
-        REPORTS / "summer2019_comportement_vs_THI.csv",
-        PACKAGE / "TABLEAUX_CSV" / "summer2019_comportement_vs_THI.csv",
-    )
+    for name in [
+        "summer2019_comportement_vs_THI.csv",
+        "objective2_indoor_multiseason_descriptifs.csv",
+        "objective2_indoor_multiseason_modeles.csv",
+    ]:
+        _copy(REPORTS / name, PACKAGE / "TABLEAUX_CSV" / name)
     _write_tables_readme(PACKAGE / "TABLEAUX_CSV" / "README_tableaux.txt")
 
     for name in [
@@ -755,6 +905,7 @@ def build_package() -> None:
     for name in [
         "build_objective2_trimodal_dataset.py",
         "run_objective2_mixed_model.py",
+        "run_objective2_indoor_multiseason.py",
     ]:
         _copy(PROJECT / name, PACKAGE / "code" / name)
 
@@ -771,6 +922,12 @@ Le notebook 11 documente l'extraction depuis les données brutes et doit être e
 """,
         encoding="utf-8",
     )
+
+    for chemin in sauves:
+        shutil.copy2(chemin, PACKAGE / chemin.name)
+        print("Fichier manuel restauré :", chemin.name)
+    if sauves:
+        shutil.rmtree(sauves[0].parent)
 
     print("Paquet Objectif 2 construit :", PACKAGE)
 

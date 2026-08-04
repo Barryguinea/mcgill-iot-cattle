@@ -43,7 +43,7 @@ Pour Winter2020, on supprime les semaines 7 et 8 car elles ne sont pas complète
 r
  cause COVID
 . Pour Summer 2021, on ne garde que la période 3 (dire initialement 3 périodes, mais problèmes techniques donc on ne garde que la dernière période)
-On supprime les jours où les données ne sont pas complètes, où il manque des heures ou des minutes (si le nombre de lignes par jours est &lt; à 1440 (minutes car les enregistrements des 
+On supprime les jours où les données ne sont pas complètes, où il manque des heures ou des minutes (si le nombre de lignes par jours est < à 1440 (minutes car les enregistrements des 
 icetags
  sont par minute)
 Summer 2021 : 
@@ -75,7 +75,7 @@ On supprime les weekends et les jours où les vaches ne sont pas en traitement/n
 On considère comme 
 outlier
  les jours où le nombre de pas d’une vache
- est &lt;&gt; à 3 SD de la moyenne de cette vache (voir explication dans article ch
+ est <> à 3 SD de la moyenne de cette vache (voir explication dans article ch
 ```
 
 ## Tables A Privilegier Des Maintenant

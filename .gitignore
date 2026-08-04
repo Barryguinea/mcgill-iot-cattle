@@ -4,6 +4,10 @@
 Données completes/
 mcgill_brut.csv
 mcgill_sls_labels.csv
+# Toute table reprenant les scores SLS vache par vache : meme statut
+# confidentiel que le fichier source, quel que soit son nom.
+*_sls_comparaison_cohorte.csv
+*validation_sls_cohorte.csv
 
 # Séries temporelles capteurs par vache (dérivées des données brutes) et
 # gros fichiers régénérables par les notebooks
@@ -42,3 +46,7 @@ Facturation/
 *Chèque*Annulé*
 *ChequeAnnule*
 determination_du_statut*.pdf
+
+# Dossier UQAM Matlab -> Python (Major Task 4.1) : code proprietaire UQAM/McGill + video 2 Go
+# CONFIDENTIEL, ne jamais versionner ni diffuser
+UQAM - Matlab vers Python (Aliou)/

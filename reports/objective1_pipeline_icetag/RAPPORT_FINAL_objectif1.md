@@ -1,4 +1,4 @@
-# Rapport final — Objectif 1
+# Rapport final - Objectif 1
 ## Appliquer et évaluer le pipeline de détection de boiterie sur les nouvelles données IoT
 
 **Auteur :** Aliou Barry (UQAM)
@@ -10,10 +10,10 @@ observations comportementales), conformément au Statement of Work.
 
 ## Résumé exécutif
 
-Le pipeline du mémoire (Isolation Forest + règles métier, intervalles de 15 min) a été appliqué
+Le pipeline initial convenu pour le projet McGill (Isolation Forest + règles métier, intervalles de 15 min) a été appliqué
 aux **quatre corpus IceTag de McGill** (Tâche 1.1) : exécution réussie, reproductible, sans
 modification. La comparaison des alertes avec les observations comportementales (Tâche 1.2)
-montre une **concordance temporelle** (24–44 % des scans ont une alerte à ±1 jour) mais **aucune
+montre une **concordance temporelle** (24-44 % des scans ont une alerte à ±1 jour) mais **aucune
 différence comportementale robuste** une fois le confondant « expérience » contrôlé : un contraste
 groupé apparent (« Idle ») s'est révélé être un artefact de Simpson. Le faible nombre de scans
 alertés par expérience limite la puissance de cette comparaison.
@@ -24,16 +24,16 @@ que le capteur IceTag mesure la quantité de mouvement, non l'asymétrie de dém
 
 ---
 
-## 1. Tâche 1.1 — Appliquer le pipeline aux nouvelles données accélérométriques
+## 1. Tâche 1.1 - Appliquer le pipeline aux nouvelles données accélérométriques
 
 ### 1.1 Données traitées (notebooks 02, 05)
 
 | Corpus | Vaches | Intervalles 15 min | Période | Couverture moy. |
 |---|---|---|---|---|
-| Fall 2019 | 30 | 93 860 | nov–déc 2019 | 99.3 % |
-| Summer 2019 | 18 | 139 111 | juin–sept 2019 | 98.3 % |
-| Winter 2019 | 17 | 136 929 | janv–avr 2019 | 94.4 % |
-| Fall 2021 | 10 | 5 131 | 30 nov–6 déc 2021 | 100 % |
+| Fall 2019 | 30 | 93 860 | nov-déc 2019 | 99.3 % |
+| Summer 2019 | 18 | 139 111 | juin-sept 2019 | 98.3 % |
+| Winter 2019 | 17 | 136 929 | janv-avr 2019 | 94.4 % |
+| Fall 2021 | 10 | 5 131 | 30 nov-6 déc 2021 | 100 % |
 
 ### 1.2 Résultats
 
@@ -47,14 +47,14 @@ que le capteur IceTag mesure la quantité de mouvement, non l'asymétrie de dém
 ### 1.3 Vérifications de qualité
 - Conversion per-minute → bins de 15 min validée (bins exactement de 15 min, continuité temporelle).
 - Reproductibilité confirmée (exécutions répétées identiques sur Fall 2019).
-- Paramètres gelés du mémoire appliqués sans modification.
+- Paramètres du pipeline initial appliqués sans modification.
 
 **Livrables 1.1 (conformes au SOW) :** jeux de données traités avec alertes + note technique
 de reproductibilité.
 
 ---
 
-## 2. Tâche 1.2 — Comparer les alertes aux observations comportementales
+## 2. Tâche 1.2 - Comparer les alertes aux observations comportementales
 
 ### 2.1 Données et méthode (notebook 10)
 
@@ -90,9 +90,9 @@ p = 0.017, attribuable au hasard sur l'ensemble des tests).
 
 ### 2.4 Bilan de concordance
 
-La concordance **temporelle** existe (24–44 % des scans de Fall 2019 / Summer 2019 / Winter 2019
+La concordance **temporelle** existe (24-44 % des scans de Fall 2019 / Summer 2019 / Winter 2019
 ont une alerte à ±1 jour), mais elle **ne se traduit pas** par une différence comportementale
-robuste, le faible nombre de scans alertés par expérience (11–14) limitant la puissance.
+robuste, le faible nombre de scans alertés par expérience (11-14) limitant la puissance.
 
 **Livrables 1.2 (conformes au SOW) :** table de concordance + rapport de validation
 (`tache1_2_concordance/`).
@@ -106,39 +106,24 @@ robuste, le faible nombre de scans alertés par expérience (11–14) limitant l
 
 ---
 
-## 3. Analyse complémentaire — confrontation aux scores cliniques SLS (hors livrables SOW)
+## 3. Analyse complémentaire - confrontation aux scores cliniques SLS (hors livrables SOW)
 
 Cette analyse ne fait pas partie des livrables de la Tâche 1.2 (qui porte sur les observations
 comportementales). Elle est menée pour évaluer la portée clinique du pipeline.
 
 - **Comparaison synchrone (Winter 2019, notebook 06) :** aucune concordance entre alertes et
-  scores SLS — Mann-Whitney p = 0.65, Spearman rho = 0.03, classifieur AUC = 0.24 (≈ hasard).
+  scores SLS - Mann-Whitney p = 0.65, Spearman rho = 0.03, classifieur AUC = 0.24 (≈ hasard).
 - **Séparabilité (notebooks 06 et 07) :** ni les features d'activité (0/5), ni les features de
   couchage (0/7) ne séparent les vaches boiteuses des saines.
 - **Analyse temporelle :** 62 % des alertes Winter 2019 se concentrent du 1 au 15 février et
-  touchent 14 vaches sur 17 — profil d'événement collectif (gestion ou environnement), que le
+  touchent 14 vaches sur 17 - profil d'événement collectif (gestion ou environnement), que le
   pipeline (analyse par vache) ne distingue pas d'une anomalie individuelle.
 
-**Lecture :** le corpus ne contient que de la boiterie légère, qui ne modifie pas l'activité
-mesurée. La limite vient du capteur (l'IceTag mesure la quantité de mouvement, pas l'asymétrie
-de démarche), non de l'algorithme. À titre de comparaison, la validation du mémoire repose sur
-l'injection d'anomalies fortes (−90 % d'activité) ; la boiterie réelle légère ne produit qu'un
-écart de ~1 %.
-
-### 3.1 Comparaison avec la pipeline V3 (HYPO + INSTABILITÉ)
-
-La pipeline **V3** — l'approche du mémoire actuel (branches HYPO + INSTABILITÉ + fusion
-hiérarchique), à distinguer de la pipeline initiale IF + règles utilisée pour l'Objectif 1 — a
-été appliquée aux mêmes 4 corpus à titre comparatif. Le comparateur IF recalculé par la V3
-reproduit exactement les 385 alertes initiales (385/385), confirmant l'identité des entrées.
-
-- Pipeline initiale (résultat livré) : **385 alertes** ; V3 hybride : **1179 alertes** (×3,1).
-- La V3 est plus sensible mais **change la définition** (alerte comportementale à vérifier, non
-  boiterie clinique) et augmente la charge de vérification ; elle reste à recalibrer.
-- **Important :** la sensibilité/spécificité *à la boiterie* n'est pas mesurable sur McGill
-  (absence de vérité-terrain clinique) ; « plus d'alertes » ne signifie pas « détecte mieux ».
-
-Détail complet : `memoirev3_comparison/CADRAGE_pipeline_initiale_vs_V3.md`.
+**Lecture :** le corpus ne contient que de la boiterie légère, qui ne modifie pas suffisamment
+l'activité mesurée. La limite vient surtout du type de capteur disponible : l'IceTag mesure la
+quantité de mouvement et les postures, pas l'asymétrie fine de démarche. La cohorte McGill permet
+donc de tester la transférabilité technique et la portée des alertes, mais pas de prouver une
+performance clinique complète de détection de boiterie.
 
 ---
 
@@ -159,16 +144,16 @@ légère reste hors de portée d'un capteur d'activité.
 
 ---
 
-## 5.1 Addendum — renforcement scientifique appliqué
+## 5.1 Addendum - renforcement scientifique appliqué
 
 Un addendum reproductible a été ajouté le 2026-07-11 pour renforcer l'interprétation de
-l'Objectif 1 sans modifier la pipeline initiale livrée ni le dossier `memoirev3`.
+l'Objectif 1 sans modifier la pipeline initiale livrée.
 
 Méthode ajoutée :
 - normalisation de chaque vache par rapport à la médiane contemporaine du troupeau ;
 - identification des épisodes collectifs (plusieurs vaches alertées dans une fenêtre courte) ;
 - reclassification des 385 alertes en niveaux de confiance A/B/C/D ;
-- maintien de la comparaison V3 comme annexe méthodologique, sans la substituer au livrable SOW.
+- production de tableaux courts et exploitables pour prioriser les alertes.
 
 Résultat synthétique :
 - les 385 notifications initiales sont conservées ;

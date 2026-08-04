@@ -1,0 +1,36 @@
+Réunion McGill / WELL-E — 30 juillet 2026
+
+Ordre d’utilisation :
+1. Presentation_partage_ecran_McGill_30_juillet_2026.pptx
+   - version à partager avec McGill/WELL-E;
+   - 15 diapositives : mandat, données, méthode, résultats, livrables,
+     limites et prochaines décisions;
+   - aucun contenu privé sur la facturation ou la préparation personnelle.
+
+2. Presentation_McGill_30_juillet_2026.pptx
+   - version détaillée pour la préparation personnelle;
+   - diapositives 1 à 19 : présentation principale;
+   - diapositives 20 à 23 : réponses de réserve;
+   - notes d’orateur détaillées sous chaque diapositive;
+   - ne pas partager par défaut.
+
+3. Guide_oral_et_QR_McGill_30_juillet_2026.docx
+   - chiffres à mémoriser;
+   - ouverture de 90 secondes et conclusion de 20 secondes;
+   - explication des données, de la pipeline, des dossiers et des fichiers;
+   - 24 questions-réponses;
+   - formulations à utiliser ou à éviter;
+   - demandes concrètes à adresser à McGill.
+
+Pendant la rencontre :
+- partager uniquement la fenêtre du diaporama
+  Presentation_partage_ecran_McGill_30_juillet_2026.pptx;
+- conserver la présentation détaillée et le guide Word sur un deuxième écran;
+- utiliser les supports privés seulement pour préparer les réponses.
+
+Message principal :
+L’objectif 1 est atteint au sens du SOW. Les quatre saisons ont été traitées,
+les quatre livrables sont présents et les sorties sont reproductibles.
+Le résultat doit être présenté comme un système d’alertes comportementales
+à vérifier, renforcé par le contexte troupeau, et non comme un diagnostic
+clinique déjà validé.

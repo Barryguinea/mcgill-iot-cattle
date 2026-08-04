@@ -32,4 +32,7 @@ La progression saisonnière, le protocole d'exercice ou d'autres caractéristiqu
 2. Présenter séparément les associations entre jours et les variations intra-jour.
 3. Densifier les scans comportementaux avant de les utiliser comme covariables.
 4. Tester les effets décalés lorsque davantage de jours indépendants seront disponibles.
-5. Étendre au froid hivernal après validation McGill de la correspondance des éthogrammes.
+5. Étendre aux basses températures sur Fall 2019, seul corpus froid disposant de sondes HOBO
+   (du 11 novembre au 13 décembre); Winter 2019 n'a aucune mesure environnementale. Prévoir un
+   indicateur adapté au froid, le THI mesurant un stress estival, et faire valider par McGill la
+   correspondance des éthogrammes entre saisons.
