@@ -49,7 +49,7 @@ Aliou Barry (UQAM)
 Ce dossier remplace les documents transmis le 30 juillet 2026.
 
 Objectif1_Pipeline_detection_boiterie/
-    RAPPORTS/                     Rapport de livraison et deux presentations
+    RAPPORTS/                     Rapport de livraison et presentation
     NOTES_SOW/                    Note de reproductibilite et rapport de validation
     DONNEES_TRAITEES_ALERTES/     Predictions, alertes et resumes, par saison
     TABLEAUX_CSV/                 Tables de synthese et de concordance
@@ -175,28 +175,30 @@ def construire_documents_seuls() -> Path:
     if destination.exists():
         shutil.rmtree(destination)
 
+    # Une seule presentation par objectif, aux memes noms que le paquet complet.
     documents = [
-        (PAQUETS[0], "Objectif1_rapport_livraison.docx"),
-        (PAQUETS[0], "Objectif1_Presentation_McGill_WELL-E.pptx"),
-        (PAQUETS[0], "Objectif1_presentation_detaillee.pptx"),
-        (PAQUETS[0], "Annexe_pipeline_actuelle_HYPO_instabilite_hybride.docx"),
-        (PAQUETS[1], "Objectif2_rapport_livraison.docx"),
-        (PAQUETS[1], "Objectif2_presentation_detaillee.pptx"),
+        (PAQUETS[0], "Objectif1_rapport_livraison.docx", None),
+        (PAQUETS[0], "Objectif1_Presentation_McGill_WELL-E.pptx",
+         "Objectif1_presentation.pptx"),
+        (PAQUETS[0], "Annexe_pipeline_actuelle_HYPO_instabilite_hybride.docx", None),
+        (PAQUETS[1], "Objectif2_rapport_livraison.docx", None),
+        (PAQUETS[1], "Objectif2_presentation_detaillee.pptx",
+         "Objectif2_presentation.pptx"),
     ]
-    for paquet, nom in documents:
+    for paquet, nom, renomme in documents:
         dossier = destination / paquet.split("_")[0]
         dossier.mkdir(parents=True, exist_ok=True)
         origine = next(
             (c for c in (SOURCE / paquet).rglob(nom)),
             SOURCE / "Reunion_McGill_2026-07-30" / nom,
         )
-        cible = dossier / nom
+        cible = dossier / (renomme or nom)
         shutil.copy2(origine, cible)
         if cible.suffix == ".pptx":
             nettoyer_presentation(cible)
         else:
             nettoyer_document(cible)
-        print(f"  {paquet.split('_')[0]:10} {nom}")
+        print(f"  {paquet.split('_')[0]:10} {cible.name}")
 
     alertes = verifier(destination)
     print()
@@ -235,14 +237,35 @@ def main() -> None:
         retirees = nettoyer_presentation(presentation)
         print(f"  nettoye : {presentation.name} ({retirees} notes retirees)")
 
-    # La presentation de la reunion du 30 juillet accompagne le paquet : c'est
-    # celle que McGill a deja, et elle a ete corrigee sur la diapositive 11.
+    # Une seule presentation par objectif. Pour l'Objectif 1 on retient celle de
+    # la reunion du 30 juillet : McGill l'a deja vue, elle est plus complete que
+    # la version courte, et sa diapositive 14 annonce l'Objectif 2 livre ici meme.
+    # Les noms sont harmonises entre les deux objectifs.
     reunion = SOURCE / "Reunion_McGill_2026-07-30" / "Objectif1_Presentation_McGill_WELL-E.pptx"
-    if reunion.exists():
-        cible = DESTINATION / PAQUETS[0] / "RAPPORTS" / reunion.name
-        shutil.copy2(reunion, cible)
-        nettoyer_presentation(cible)
-        print(f"  ajoute : {reunion.name}")
+    rapports1 = DESTINATION / PAQUETS[0] / "RAPPORTS"
+    for surnumeraire in rapports1.glob("*.pptx"):
+        surnumeraire.unlink()
+    cible = rapports1 / "Objectif1_presentation.pptx"
+    shutil.copy2(reunion, cible)
+    nettoyer_presentation(cible)
+    print(f"  presentation Objectif 1 : {cible.name} (16 diapos)")
+
+    ancienne2 = DESTINATION / PAQUETS[1] / "RAPPORTS" / "Objectif2_presentation_detaillee.pptx"
+    if ancienne2.exists():
+        ancienne2.rename(ancienne2.with_name("Objectif2_presentation.pptx"))
+        print("  presentation Objectif 2 : Objectif2_presentation.pptx (12 diapos)")
+
+    # Les README nomment les fichiers : ils doivent suivre le renommage.
+    for readme, avant, apres in [
+        (DESTINATION / PAQUETS[0] / "README_livraison_objectif1.txt",
+         "Objectif1_presentation_detaillee.pptx", "Objectif1_presentation.pptx"),
+        (DESTINATION / PAQUETS[1] / "README_livraison_objectif2.txt",
+         "Objectif2_presentation_detaillee.pptx", "Objectif2_presentation.pptx"),
+    ]:
+        if readme.exists():
+            readme.write_text(
+                readme.read_text(encoding="utf-8").replace(avant, apres), encoding="utf-8"
+            )
 
     (DESTINATION / "LISEZ-MOI.txt").write_text(LISEZ_MOI, encoding="utf-8")
 
