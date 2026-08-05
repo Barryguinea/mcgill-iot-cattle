@@ -1669,6 +1669,11 @@ Cette note confirme que le pipeline de détection a été appliqué aux quatre c
 - DONNEES_TRAITEES_ALERTES/: prédictions, alertes et résumés par saison.
 - TABLEAUX_CSV/: synthèses et tables de concordance.
 
+## Où trouver le code
+Le code du pipeline n'est pas dupliqué dans ce paquet. Il accompagne le livrable de l'Objectif 3, dans `code/core/`, avec un notebook qui l'exécute sur un échantillon et vérifie ses sorties par assertion.
+
+Le présent paquet contient en revanche le script qui reproduit la comparaison des deux approches sur les scores SLS : `ANNEXE_pipeline_actuelle_HYPO_instabilite_hybride/code/run_objective1_sls_comparaison_equitable.py`.
+
 ## Limite
 Les sorties sont reproductibles comme alertes comportementales. Des scores SLS synchronisés sont disponibles pour une sous-cohorte Winter 2019, mais le faible nombre de cas SLS >= 2 ne permet pas une validation clinique complète.
 """
