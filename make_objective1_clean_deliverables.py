@@ -515,9 +515,15 @@ def _concordance_rows(concordance: pd.DataFrame) -> list[list[str]]:
     for _, row in concordance.iterrows():
         exp = str(row.get("Experiment", row.get("experience", "")))
         exp = CONCORDANCE_LABELS.get(exp, exp)
-        scans = row.get("n_scans", row.get("scans", ""))
-        alerted = row.get("scans_avec_alerte", row.get("n_scans_avec_alerte", ""))
-        pct = row.get("taux_concurrence_%", row.get("pct_scans_avec_alerte", ""))
+        # Les colonnes ont ete renommees en juillet, quand le denominateur est
+        # passe aux seuls scans couverts par IceTag a plus ou moins un jour.
+        # Les anciens noms restent acceptes pour les fichiers d'archive.
+        scans = row.get("scans_couverts_icetag_pm1j",
+                        row.get("n_scans", row.get("scans", "")))
+        alerted = row.get("scans_avec_alerte_pm1j",
+                          row.get("scans_avec_alerte", row.get("n_scans_avec_alerte", "")))
+        pct = row.get("taux_concordance_pm1j_pct",
+                      row.get("taux_concurrence_%", row.get("pct_scans_avec_alerte", "")))
         items.append((label_order.get(exp, 99), [exp, str(int(scans)), str(int(alerted)), f"{float(pct):.1f}%"]))
     rows.extend(item for _, item in sorted(items, key=lambda x: x[0]))
     return rows
