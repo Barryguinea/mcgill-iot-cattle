@@ -50,3 +50,27 @@ determination_du_statut*.pdf
 # Dossier UQAM Matlab -> Python (Major Task 4.1) : code proprietaire UQAM/McGill + video 2 Go
 # CONFIDENTIEL, ne jamais versionner ni diffuser
 UQAM - Matlab vers Python (Aliou)/
+
+# ============================================================
+# Documents contractuels, commerciaux et courriels - CONFIDENTIEL
+# Le depot est public : rien de ce qui touche au contrat, aux
+# echanges avec le client ou aux notes internes n'y a sa place.
+# ============================================================
+SOW*.docx
+methodologie_offre.md
+MAIL_*.txt
+CONTEXTE_PROJET_MCGILL_TXT.txt
+MINI_RAPPORT_avancement.md
+brouillon_*.md
+presentation_mcgill_equipe.pptx
+presentation_memoire_mcgill_v2.pptx
+presentation_travaux_mcgill.pptx
+
+# Scores SLS par vache : donnees de recherche non publiees appartenant
+# a McGill, quel que soit le nom du fichier.
+reports/mcgill_pipeline_vs_sls.csv
+reports/objective1_pipeline_icetag/diagnostic_separabilite/
+# Ces deux fichiers portent les scores SLS de 12 vaches ecrits en dur dans
+# le code : meme statut confidentiel que le fichier source.
+convert_mcgill_to_pipeline.py
+notebooks/02_convert_icetag_to_pipeline.ipynb
